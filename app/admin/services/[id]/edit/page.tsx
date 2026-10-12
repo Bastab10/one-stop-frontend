@@ -12,6 +12,7 @@ type Service = {
   number: number;
   title: string;
   description: string;
+  details?: string;
   image: string;
   active: boolean;
 };
@@ -38,6 +39,7 @@ function EditServiceContent() {
   const [service, setService] = useState<Service | null>(null);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [details, setDetails] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [active, setActive] = useState(true);
@@ -73,6 +75,7 @@ function EditServiceContent() {
           setService(found);
           setTitle(found.title);
           setDescription(found.description);
+          setDetails(found.details ?? "");
           setImageUrl(found.image);
           setActive(found.active);
         }
@@ -89,7 +92,9 @@ function EditServiceContent() {
       }
     }
 
-    void loadService();
+    if (id) {
+      void loadService();
+    }
 
     return () => {
       cancelled = true;
@@ -100,6 +105,20 @@ function EditServiceContent() {
     event.preventDefault();
     setSaving(true);
     setError("");
+
+    if (imageFile) {
+      if (!["image/jpeg", "image/png", "image/webp"].includes(imageFile.type)) {
+        setError("Only JPG, PNG or WebP images are allowed.");
+        setSaving(false);
+        return;
+      }
+
+      if (imageFile.size > 5 * 1024 * 1024) {
+        setError("Image size must be 5 MB or less.");
+        setSaving(false);
+        return;
+      }
+    }
 
     try {
       let finalImage = imageUrl;
@@ -126,10 +145,13 @@ function EditServiceContent() {
       const response = await fetch(`${API_URL}/services/${id}`, {
         method: "PATCH",
         credentials: "include",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify({
           title: title.trim(),
           description: description.trim(),
+          details: details.trim(),
           image: finalImage,
           active,
         }),
@@ -182,7 +204,7 @@ function EditServiceContent() {
       <div className="mx-auto max-w-3xl">
         <header className="flex items-center justify-between border-b border-[#10284C]/10 pb-6">
           <div>
-            <p className="font-serif text-2xl">সহজ · Shohoj</p>
+            <p className="font-serif text-2xl">SAHAJ</p>
             <p className="text-sm text-[#10284C]/60">Edit Service</p>
           </div>
           <button
@@ -222,22 +244,45 @@ function EditServiceContent() {
               htmlFor="description"
               className="mb-2 block text-sm font-semibold"
             >
-              Description
+              Short Description
             </label>
             <textarea
               id="description"
               value={description}
               onChange={(event) => setDescription(event.target.value)}
-              rows={4}
+              rows={3}
               maxLength={300}
               required
               className="w-full resize-y border px-4 py-3 outline-none focus:border-[#B58A12]"
             />
+            <p className="mt-1 text-right text-xs text-[#10284C]/50">
+              {description.length}/300 characters
+            </p>
+          </div>
+
+          <div>
+            <label
+              htmlFor="details"
+              className="mb-2 block text-sm font-semibold"
+            >
+              Detailed Information
+            </label>
+            <textarea
+              id="details"
+              value={details}
+              onChange={(event) => setDetails(event.target.value)}
+              rows={7}
+              maxLength={5000}
+              placeholder="Describe the service in detail..."
+              className="w-full resize-y border px-4 py-3 outline-none focus:border-[#B58A12]"
+            />
+            <p className="mt-1 text-right text-xs text-[#10284C]/50">
+              {details.length}/5000 characters
+            </p>
           </div>
 
           <div>
             <p className="mb-2 text-sm font-semibold">Current Image</p>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={imageUrl}
               alt={title}
@@ -255,7 +300,7 @@ function EditServiceContent() {
                 const file = event.target.files?.[0] ?? null;
 
                 if (file && file.size > 5 * 1024 * 1024) {
-                  setError("Image size must be less than 5 MB.");
+                  setError("Image size must be 5 MB or less.");
                   event.target.value = "";
                   setImageFile(null);
                   return;

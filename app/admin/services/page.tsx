@@ -125,7 +125,7 @@ export default function AdminServicesPage() {
       <div className="mx-auto max-w-7xl">
         <header className="flex flex-wrap items-center justify-between gap-4 border-b border-[#10284C]/10 pb-6">
           <div>
-            <p className="font-serif text-2xl">সহজ · Shohoj</p>
+            <p className="font-serif text-2xl"><strong className="font-bold">SAHAJ</strong></p>
             <p className="text-sm text-[#10284C]/60">Admin Dashboard</p>
           </div>
 

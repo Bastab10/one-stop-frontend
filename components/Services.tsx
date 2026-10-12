@@ -1,6 +1,8 @@
+
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { ArrowUpRight, Phone } from "lucide-react";
 
 const BUSINESS_PHONE = "916001353032";
@@ -19,6 +21,7 @@ type Service = {
 export default function Services() {
   const [services, setServices] = useState<Service[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -41,9 +44,10 @@ export default function Services() {
             (service: Service) => service.active
           )
         );
-      } catch (error) {
-        if (error instanceof Error && error.name !== "AbortError") {
-          console.error("Failed to load services:", error);
+      } catch (err) {
+        if (err instanceof Error && err.name !== "AbortError") {
+          console.error("Failed to load services:", err);
+          setError(true);
         }
       } finally {
         if (!controller.signal.aborted) {
@@ -79,15 +83,16 @@ export default function Services() {
             </h2>
           </div>
 
-          <p className="max-w-sm text-sm leading-7 text-[#10284C]/65 sm:text-base">
-            From everyday home needs to your biggest celebrations,
-            find the right service with সহজ.
-          </p>
+        
         </div>
 
         {loading ? (
           <p className="py-10 text-sm text-[#10284C]/65">
             Loading services...
+          </p>
+        ) : error ? (
+          <p className="py-10 text-sm text-red-600">
+            Unable to load services. Please try again later.
           </p>
         ) : services.length === 0 ? (
           <p className="py-10 text-sm text-[#10284C]/65">
@@ -96,13 +101,15 @@ export default function Services() {
         ) : (
           <div className="grid grid-cols-1 items-stretch gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
             {services.map((service) => (
-              <a
+              <article
                 key={service._id}
-                href={`tel:+${BUSINESS_PHONE}`}
-                aria-label={`Call to enquire about ${service.title}`}
                 className="group flex h-full flex-col overflow-hidden border border-[#10284C]/10 bg-white"
               >
-                <div className="relative h-56 shrink-0 overflow-hidden bg-white sm:h-60">
+                <Link
+                  href={`/services/${service._id}`}
+                  aria-label={`View details for ${service.title}`}
+                  className="relative block h-56 shrink-0 overflow-hidden bg-white sm:h-60"
+                >
                   <img
                     src={service.image}
                     alt={service.title}
@@ -117,27 +124,36 @@ export default function Services() {
                   <span className="absolute bottom-4 right-4 flex h-10 w-10 items-center justify-center rounded-full bg-[#F5CA35] text-[#10284C] transition-transform duration-300 group-hover:rotate-45">
                     <ArrowUpRight size={19} />
                   </span>
-                </div>
+                </Link>
 
                 <div className="flex flex-1 flex-col p-5 sm:p-6">
-                  <h3 className="font-serif text-2xl leading-tight tracking-tight">
-                    {service.title}
-                  </h3>
+                  <Link
+                    href={`/services/${service._id}`}
+                    className="block"
+                  >
+                    <h3 className="font-serif text-2xl leading-tight tracking-tight">
+                      {service.title}
+                    </h3>
 
-                  <p className="mt-2 text-sm leading-6 text-[#10284C]/65">
-                    {service.description}
-                  </p>
+                    <p className="mt-2 text-sm leading-6 text-[#10284C]/65">
+                      {service.description}
+                    </p>
+                  </Link>
 
-                  <p className="mt-auto flex items-center justify-between border-t border-[#10284C]/10 pt-4 text-[10px] font-bold uppercase tracking-[0.12em] text-[#B58A12]">
+                  <a
+                    href={`tel:+${BUSINESS_PHONE}`}
+                    aria-label={`Call for ${service.title}`}
+                    className="mt-auto flex items-center justify-between border-t border-[#10284C]/10 pt-4 text-[10px] font-bold uppercase tracking-[0.12em] text-[#B58A12]"
+                  >
                     <span className="flex items-center gap-2">
                       <Phone size={13} />
                       Call for Service
                     </span>
 
                     <ArrowUpRight size={15} />
-                  </p>
+                  </a>
                 </div>
-              </a>
+              </article>
             ))}
           </div>
         )}

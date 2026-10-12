@@ -1,6 +1,7 @@
+
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 const API_URL =
@@ -11,17 +12,21 @@ export default function NewServicePage() {
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [details, setDetails] = useState("");
   const [image, setImage] = useState<File | null>(null);
   const [preview, setPreview] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
+  useEffect(() => {
+    return () => {
+      if (preview) URL.revokeObjectURL(preview);
+    };
+  }, [preview]);
+
   function handleImageChange(file: File | null) {
     setImage(file);
-    setPreview((current) => {
-      if (current) URL.revokeObjectURL(current);
-      return file ? URL.createObjectURL(file) : "";
-    });
+    setPreview(file ? URL.createObjectURL(file) : "");
   }
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -33,20 +38,19 @@ export default function NewServicePage() {
       return;
     }
 
-    if (!image.type.startsWith("image/")) {
-      setError("Please select a valid image file.");
+    if (!["image/jpeg", "image/png", "image/webp"].includes(image.type)) {
+      setError("Only JPG, PNG or WebP images are allowed.");
       return;
     }
 
     if (image.size > 5 * 1024 * 1024) {
-      setError("Image size must be less than 5 MB.");
+      setError("Image size must be 5 MB or less.");
       return;
     }
 
     setLoading(true);
 
     try {
-      // Step 1: Upload image to Cloudinary through the backend.
       const formData = new FormData();
       formData.append("image", image);
 
@@ -62,7 +66,6 @@ export default function NewServicePage() {
         throw new Error(uploadData.message || "Image upload failed.");
       }
 
-      // Step 2: Save service details and image URL in MongoDB.
       const serviceResponse = await fetch(`${API_URL}/services`, {
         method: "POST",
         credentials: "include",
@@ -72,6 +75,7 @@ export default function NewServicePage() {
         body: JSON.stringify({
           title: title.trim(),
           description: description.trim(),
+          details: details.trim(),
           image: uploadData.image,
         }),
       });
@@ -98,7 +102,7 @@ export default function NewServicePage() {
       <div className="mx-auto max-w-3xl">
         <header className="flex items-center justify-between border-b border-[#10284C]/10 pb-6">
           <div>
-            <p className="font-serif text-2xl">সহজ · Shohoj</p>
+            <p className="font-serif text-2xl">SAHAJ</p>
             <p className="text-sm text-[#10284C]/60">Admin Dashboard</p>
           </div>
 
@@ -117,7 +121,7 @@ export default function NewServicePage() {
           </p>
           <h1 className="mt-2 font-serif text-4xl">Add New Service</h1>
           <p className="mt-2 text-sm text-[#10284C]/60">
-            Add the details and image for a service offered by your business.
+            Add the name, descriptions and image for your service.
           </p>
         </section>
 
@@ -126,10 +130,7 @@ export default function NewServicePage() {
           className="mt-8 space-y-6 border border-[#10284C]/10 bg-white p-6 sm:p-8"
         >
           <div>
-            <label
-              htmlFor="title"
-              className="mb-2 block text-sm font-semibold"
-            >
+            <label htmlFor="title" className="mb-2 block text-sm font-semibold">
               Service Name
             </label>
             <input
@@ -149,14 +150,14 @@ export default function NewServicePage() {
               htmlFor="description"
               className="mb-2 block text-sm font-semibold"
             >
-              Service Description
+              Short Description
             </label>
             <textarea
               id="description"
               value={description}
               onChange={(event) => setDescription(event.target.value)}
-              placeholder="Describe what this service includes..."
-              rows={4}
+              placeholder="A short description for the service card..."
+              rows={3}
               maxLength={300}
               required
               className="w-full resize-y border border-[#10284C]/20 px-4 py-3 outline-none focus:border-[#B58A12]"
@@ -168,9 +169,27 @@ export default function NewServicePage() {
 
           <div>
             <label
-              htmlFor="image"
+              htmlFor="details"
               className="mb-2 block text-sm font-semibold"
             >
+              Detailed Information
+            </label>
+            <textarea
+              id="details"
+              value={details}
+              onChange={(event) => setDetails(event.target.value)}
+              placeholder="Explain the service, what's included, who it's for and any other useful information..."
+              rows={7}
+              maxLength={5000}
+              className="w-full resize-y border border-[#10284C]/20 px-4 py-3 outline-none focus:border-[#B58A12]"
+            />
+            <p className="mt-1 text-right text-xs text-[#10284C]/50">
+              {details.length}/5000 characters
+            </p>
+          </div>
+
+          <div>
+            <label htmlFor="image" className="mb-2 block text-sm font-semibold">
               Service Image
             </label>
             <input
@@ -190,7 +209,6 @@ export default function NewServicePage() {
             {preview && (
               <div className="mt-4">
                 <p className="mb-2 text-sm font-medium">Image Preview</p>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={preview}
                   alt="Selected service preview"

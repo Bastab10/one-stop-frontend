@@ -1,4 +1,3 @@
-
 "use client";
 
 import { Suspense, useState } from "react";
@@ -39,8 +38,7 @@ function ContactContent() {
 
   const serviceFromUrl =
     services.find(
-      (item) =>
-        item.toLowerCase() === requestedService?.trim().toLowerCase()
+      (item) => item.toLowerCase() === requestedService?.trim().toLowerCase(),
     ) || "";
 
   const [name, setName] = useState("");
@@ -60,7 +58,7 @@ function ContactContent() {
     }
 
     const enquiry = [
-      "Hello Shohoj! I would like to enquire about your services.",
+      "HelloSAHAJ! I would like to enquire about your services.",
       "",
       `Name: ${name}`,
       `Customer Phone: ${phone}`,
@@ -70,8 +68,7 @@ function ContactContent() {
     ].join("\n");
 
     const whatsappURL =
-      `https://wa.me/${BUSINESS_PHONE}?text=` +
-      encodeURIComponent(enquiry);
+      `https://wa.me/${BUSINESS_PHONE}?text=` + encodeURIComponent(enquiry);
 
     window.open(whatsappURL, "_blank", "noopener,noreferrer");
   }
@@ -98,18 +95,17 @@ function ContactContent() {
             </h2>
 
             <p className="max-w-md text-sm leading-7 text-[#10284C]/65 sm:text-base">
-              No need to search everywhere. Tell us what you need, and let
-              সহজ help you explore the right service for your home, daily
-              needs or special occasion.
+              No need to search everywhere. Tell us what you need, and let <b/>
+
+               <strong className="font-bold">SAHAJ</strong> help you explore the
+              right service for your home, daily needs or special occasion.
             </p>
           </div>
         </div>
 
         <div className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr] lg:gap-20">
           <div>
-            <h3 className="font-serif text-3xl sm:text-4xl">
-              Get in touch
-            </h3>
+            <h3 className="font-serif text-3xl sm:text-4xl">Get in touch</h3>
 
             <p className="mt-4 max-w-sm text-sm leading-7 text-[#10284C]/65">
               Have a question or need more than one service? Contact us and
@@ -168,7 +164,7 @@ function ContactContent() {
                   <p className="mt-1 text-sm leading-6 text-[#10284C]/65">
                     Monday – Saturday
                     <br />
-                    09:00 AM – 06:00 PM
+                    Open 24 Hours
                   </p>
                 </div>
               </div>
@@ -329,14 +325,12 @@ function ContactContent() {
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#B58A12]">
-                সহজ · Shohoj
+                <strong className="font-bold">SAHAJ</strong>
               </p>
 
               <h3 className="mt-3 font-serif text-3xl leading-tight sm:text-4xl">
                 Less searching.
-                <span className="italic text-[#DCAF24]">
-                  {" "}More living.
-                </span>
+                <span className="italic text-[#DCAF24]"> More living.</span>
               </h3>
             </div>
 
