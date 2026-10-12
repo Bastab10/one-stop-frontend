@@ -1,4 +1,3 @@
-
 "use client";
 
 import { Suspense, useEffect, useState } from "react";
@@ -113,6 +112,11 @@ function ServiceDetailsContent() {
     );
   }
 
+  const whatsappMessage = `Hello SAHAJ, I am interested in ${service.title}. Please share more details.`;
+  const whatsappUrl = `https://wa.me/${BUSINESS_PHONE}?text=${encodeURIComponent(
+    whatsappMessage
+  )}`;
+
   return (
     <main className="min-h-screen bg-white text-[#10284C]">
       <div className="mx-auto max-w-[1400px] px-5 py-10 sm:px-8 sm:py-16 lg:px-14">
@@ -169,9 +173,7 @@ function ServiceDetailsContent() {
               </a>
 
               <a
-                href={`https://wa.me/${BUSINESS_PHONE}?text=${encodeURIComponent(
-                  `Hello <strong className="font-bold">SAHAJ</strong>, I am interested in ${service.title}. Please share more details.`
-                )}`}
+                href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-3 border border-[#10284C]/20 px-7 py-4 text-sm font-semibold transition hover:border-[#DCAF24]"
@@ -182,8 +184,9 @@ function ServiceDetailsContent() {
             </div>
 
             <p className="mt-6 text-xs leading-6 text-[#10284C]/55">
-              Contact<strong className="font-bold">SAHAJ</strong> to discuss your requirements and arrange your
-              service in Tezpur, Assam.
+              Contact{" "}
+              <strong className="font-bold">SAHAJ</strong> to discuss your
+              requirements and arrange your service in Tezpur, Assam.
             </p>
           </div>
         </div>
