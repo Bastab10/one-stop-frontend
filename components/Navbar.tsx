@@ -19,8 +19,8 @@ const navLinks = [
   { label: "Contact", href: "/#contact" },
 ];
 
-const BUSINESS_PHONE = "916001353032";
-const CONTACT_EMAIL = "bastabs398@gmail.com";
+const BUSINESS_PHONE = "916026936104";
+const CONTACT_EMAIL = "sahajservices@gmail.com";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);

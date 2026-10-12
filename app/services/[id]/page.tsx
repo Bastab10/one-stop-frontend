@@ -5,7 +5,7 @@ import { useParams } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, ArrowUpRight, Phone } from "lucide-react";
 
-const BUSINESS_PHONE = "916001353032";
+const BUSINESS_PHONE = "916026936104";
 const API_URL =
   process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
 

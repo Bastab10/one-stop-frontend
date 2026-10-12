@@ -13,8 +13,8 @@ import {
   MessageCircle,
 } from "lucide-react";
 
-const BUSINESS_PHONE = "916001353032";
-const BUSINESS_EMAIL = "bastabs398@gmail.com";
+const BUSINESS_PHONE = "916026936104";
+const BUSINESS_EMAIL = "sahajservices@gmail.com";
 
 const services = [
   "Painting Services",
