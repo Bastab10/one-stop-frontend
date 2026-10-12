@@ -164,7 +164,7 @@ function ContactContent() {
                   <p className="mt-1 text-sm leading-6 text-[#10284C]/65">
                     Monday – Saturday
                     <br />
-                    Open 24 Hours
+                    10:00 AM – 6:00 PM
                   </p>
                 </div>
               </div>

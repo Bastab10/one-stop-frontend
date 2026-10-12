@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import TopBar from "@/components/TopBar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.sahajservices.in"),
-  title: "SAHAJ – Home Services & One Stop Solutions in Assam",
+  title: "SAHAJ – Home Services & One Stop Solutions in Tezpur",
   description:
     "Discover trusted home and everyday services with SAHAJ in Tezpur, including electrician, AC repair, carpentry, painting, catering, and more.",
   alternates: {
@@ -36,7 +37,10 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <TopBar />
+        {children}
+      </body>
     </html>
   );
 }
