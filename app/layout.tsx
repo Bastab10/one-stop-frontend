@@ -13,9 +13,17 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "সহজ | One Stop Service Solutions",
+  metadataBase: new URL("https://www.sahajservices.in"),
+  title: "SAHAJ – Home Services & One Stop Solutions in Assam",
   description:
-    "Shohoj brings everyday services together, from home maintenance and food to events and special occasions.",
+    "Discover trusted home and everyday services with SAHAJ in Tezpur, including electrician, AC repair, carpentry, painting, catering, and more.",
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
