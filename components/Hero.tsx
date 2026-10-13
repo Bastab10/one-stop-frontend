@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRight, Users, MapPin, ShieldCheck } from "lucide-react";
 
-const BUSINESS_PHONE = "91XXXXXXXXXX";
+const BUSINESS_PHONE = "916026936104";
 
 const servicePhotos = [
   {
