@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.sahajservices.in"),
-  title: "SAHAJ – Home Services & One Stop Solutions in Tezpur",
+  title: "SAHAJ (সহজ) – A Unique Way to Solve Your Problems with Just One Click in Tezpur",
   description:
     "Discover trusted home and everyday services with SAHAJ in Tezpur, including electrician, AC repair, carpentry, painting, catering, and more.",
   alternates: {
