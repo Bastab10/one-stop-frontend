@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Suspense, useState } from "react";
@@ -12,6 +13,7 @@ import {
   Clock3,
   MessageCircle,
 } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 
 const BUSINESS_PHONE = "916026936104";
 const BUSINESS_EMAIL = "sohojservices@gmail.com";
@@ -38,7 +40,7 @@ function ContactContent() {
 
   const serviceFromUrl =
     services.find(
-      (item) => item.toLowerCase() === requestedService?.trim().toLowerCase(),
+      (item) => item.toLowerCase() === requestedService?.trim().toLowerCase()
     ) || "";
 
   const [name, setName] = useState("");
@@ -58,7 +60,7 @@ function ContactContent() {
     }
 
     const enquiry = [
-      "Hello SOHOJ! I would like to enquire about your services.",
+      "Hello SAHAJ! I would like to enquire about your services.",
       "",
       `Name: ${name}`,
       `Customer Phone: ${phone}`,
@@ -68,7 +70,8 @@ function ContactContent() {
     ].join("\n");
 
     const whatsappURL =
-      `https://wa.me/${BUSINESS_PHONE}?text=` + encodeURIComponent(enquiry);
+      `https://wa.me/${BUSINESS_PHONE}?text=` +
+      encodeURIComponent(enquiry);
 
     window.open(whatsappURL, "_blank", "noopener,noreferrer");
   }
@@ -79,6 +82,7 @@ function ContactContent() {
       className="scroll-mt-24 bg-white py-16 text-[#10284C] sm:py-20 lg:py-24"
     >
       <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-14 xl:px-20">
+        {/* Section heading */}
         <div className="mb-12 border-b border-[#10284C]/10 pb-10 sm:mb-16 sm:pb-12">
           <p className="mb-5 flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.22em] text-[#10284C]/60 sm:text-xs">
             <span className="h-px w-9 bg-[#DCAF24]" />
@@ -95,17 +99,20 @@ function ContactContent() {
             </h2>
 
             <p className="max-w-md text-sm leading-7 text-[#10284C]/65 sm:text-base">
-              No need to search everywhere. Tell us what you need, and let <b/>
-
-               <strong className="font-bold">SOHOJ</strong> help you explore the
+              No need to search everywhere. Tell us what you need, and let{" "}
+              <strong className="font-bold">SAHAJ</strong> help you explore the
               right service for your home, daily needs or special occasion.
             </p>
           </div>
         </div>
 
+        {/* Contact information and enquiry form */}
         <div className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr] lg:gap-20">
+          {/* Left side */}
           <div>
-            <h3 className="font-serif text-3xl sm:text-4xl">Get in touch</h3>
+            <h3 className="font-serif text-3xl sm:text-4xl">
+              Get in touch
+            </h3>
 
             <p className="mt-4 max-w-sm text-sm leading-7 text-[#10284C]/65">
               Have a question or need more than one service? Contact us and
@@ -113,10 +120,12 @@ function ContactContent() {
             </p>
 
             <div className="mt-8 space-y-0 border-t border-[#10284C]/10">
+              {/* Location */}
               <div className="flex gap-4 border-b border-[#10284C]/10 py-5">
                 <div className="flex h-11 w-11 shrink-0 items-center justify-center bg-[#F5CA35]/20">
                   <MapPin size={20} className="text-[#9A7410]" />
                 </div>
+
                 <div>
                   <h4 className="text-sm font-semibold">Our Location</h4>
                   <p className="mt-1 text-sm leading-6 text-[#10284C]/65">
@@ -125,40 +134,46 @@ function ContactContent() {
                 </div>
               </div>
 
+              {/* Phone */}
               <div className="flex gap-4 border-b border-[#10284C]/10 py-5">
                 <div className="flex h-11 w-11 shrink-0 items-center justify-center bg-[#F5CA35]/20">
                   <Phone size={20} className="text-[#9A7410]" />
                 </div>
+
                 <div>
                   <h4 className="text-sm font-semibold">Call Us</h4>
                   <a
                     href={`tel:+${BUSINESS_PHONE}`}
-                    className="mt-1 block text-sm text-[#10284C]/65"
+                    className="mt-1 block text-sm text-[#10284C]/65 transition hover:text-[#B58A12]"
                   >
                     +{BUSINESS_PHONE}
                   </a>
                 </div>
               </div>
 
+              {/* Email */}
               <div className="flex gap-4 border-b border-[#10284C]/10 py-5">
                 <div className="flex h-11 w-11 shrink-0 items-center justify-center bg-[#F5CA35]/20">
                   <Mail size={20} className="text-[#9A7410]" />
                 </div>
+
                 <div>
                   <h4 className="text-sm font-semibold">Email Us</h4>
                   <a
                     href={`mailto:${BUSINESS_EMAIL}`}
-                    className="mt-1 block break-all text-sm text-[#10284C]/65"
+                    className="mt-1 block break-all text-sm text-[#10284C]/65 transition hover:text-[#B58A12]"
                   >
                     {BUSINESS_EMAIL}
                   </a>
                 </div>
               </div>
 
+              {/* Working hours */}
               <div className="flex gap-4 border-b border-[#10284C]/10 py-5">
                 <div className="flex h-11 w-11 shrink-0 items-center justify-center bg-[#F5CA35]/20">
                   <Clock3 size={20} className="text-[#9A7410]" />
                 </div>
+
                 <div>
                   <h4 className="text-sm font-semibold">Working Hours</h4>
                   <p className="mt-1 text-sm leading-6 text-[#10284C]/65">
@@ -170,11 +185,13 @@ function ContactContent() {
               </div>
             </div>
 
+            {/* WhatsApp information box */}
             <div className="mt-7 flex items-start gap-3 bg-[#F8F7F3] p-5">
               <MessageCircle
                 size={20}
                 className="mt-0.5 shrink-0 text-[#9A7410]"
               />
+
               <p className="text-sm leading-6 text-[#10284C]/70">
                 <strong className="text-[#10284C]">
                   Simple and convenient.
@@ -185,6 +202,7 @@ function ContactContent() {
             </div>
           </div>
 
+          {/* Right side: enquiry form */}
           <div className="border border-[#10284C]/10 p-5 sm:p-8 lg:p-10">
             <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#B58A12]">
               Service Enquiry
@@ -199,6 +217,7 @@ function ContactContent() {
             </p>
 
             <form onSubmit={handleSubmit} className="mt-8 space-y-5">
+              {/* Name and phone */}
               <div className="grid gap-5 sm:grid-cols-2">
                 <div>
                   <label
@@ -207,6 +226,7 @@ function ContactContent() {
                   >
                     Your Name *
                   </label>
+
                   <input
                     id="contact-name"
                     name="name"
@@ -227,12 +247,15 @@ function ContactContent() {
                   >
                     Phone Number *
                   </label>
+
                   <input
                     id="contact-phone"
                     name="phone"
                     type="tel"
                     autoComplete="tel"
                     required
+                    pattern="[0-9+\s()-]{10,20}"
+                    title="Please enter a valid phone number."
                     value={phone}
                     onChange={(event) => setPhone(event.target.value)}
                     placeholder="Enter your phone number"
@@ -241,6 +264,7 @@ function ContactContent() {
                 </div>
               </div>
 
+              {/* Email */}
               <div>
                 <label
                   htmlFor="contact-email"
@@ -248,6 +272,7 @@ function ContactContent() {
                 >
                   Email Address
                 </label>
+
                 <input
                   id="contact-email"
                   name="email"
@@ -260,6 +285,7 @@ function ContactContent() {
                 />
               </div>
 
+              {/* Service selection */}
               <div>
                 <label
                   htmlFor="contact-service"
@@ -267,6 +293,7 @@ function ContactContent() {
                 >
                   Which service do you need? *
                 </label>
+
                 <select
                   id="contact-service"
                   name="service"
@@ -278,6 +305,7 @@ function ContactContent() {
                   <option value="" disabled>
                     Select a service
                   </option>
+
                   {services.map((item) => (
                     <option key={item} value={item}>
                       {item}
@@ -286,6 +314,7 @@ function ContactContent() {
                 </select>
               </div>
 
+              {/* Requirement */}
               <div>
                 <label
                   htmlFor="contact-message"
@@ -293,6 +322,7 @@ function ContactContent() {
                 >
                   Tell Us About Your Requirement *
                 </label>
+
                 <textarea
                   id="contact-message"
                   name="message"
@@ -305,12 +335,24 @@ function ContactContent() {
                 />
               </div>
 
+              {/* WhatsApp CTA */}
               <button
                 type="submit"
-                className="flex w-full items-center justify-center gap-3 bg-[#10284C] px-5 py-4 text-sm font-semibold text-white transition hover:bg-[#1B3C68]"
+                className="group flex w-full items-center justify-center gap-3 rounded-xl bg-[#00A859] px-5 py-5 text-sm font-bold text-white shadow-lg shadow-green-600/15 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#008F4C] hover:shadow-xl active:translate-y-0 sm:text-base"
               >
-                Send Enquiry on WhatsApp
-                <ArrowUpRight size={18} />
+                <FaWhatsapp
+                  size={28}
+                  aria-hidden="true"
+                  className="shrink-0"
+                />
+
+                <span>Send Enquiry on WhatsApp</span>
+
+                <ArrowUpRight
+                  size={21}
+                  aria-hidden="true"
+                  className="shrink-0 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
+                />
               </button>
 
               <p className="text-center text-xs leading-5 text-[#10284C]/50">
@@ -321,11 +363,12 @@ function ContactContent() {
           </div>
         </div>
 
+        {/* Bottom CTA */}
         <div className="mt-16 border-t border-[#10284C]/10 pt-7 sm:mt-20">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#B58A12]">
-                <strong className="font-bold">SOHOJ</strong>
+                <strong className="font-bold">SAHAJ</strong>
               </p>
 
               <h3 className="mt-3 font-serif text-3xl leading-tight sm:text-4xl">
@@ -336,7 +379,7 @@ function ContactContent() {
 
             <Link
               href="/#services"
-              className="inline-flex items-center gap-2 text-sm font-semibold"
+              className="inline-flex items-center gap-2 text-sm font-semibold transition-colors hover:text-[#B58A12]"
             >
               Explore all services
               <ArrowUpRight size={17} />
