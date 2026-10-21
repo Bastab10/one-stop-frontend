@@ -1,13 +1,17 @@
+
 "use client";
 
 import { Suspense, useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, ArrowUpRight, Phone } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 
 const BUSINESS_PHONE = "916026936104";
+
 const API_URL =
-  process.env.NEXT_PUBLIC_API_URL || "https://one-stop-backend-production.up.railway.app/api";
+  process.env.NEXT_PUBLIC_API_URL ||
+  "https://one-stop-backend-production.up.railway.app/api";
 
 type Service = {
   _id: string;
@@ -58,6 +62,7 @@ function ServiceDetailsContent() {
         }
 
         const data = await response.json();
+
         const services: Service[] = Array.isArray(data.services)
           ? data.services
           : [];
@@ -98,12 +103,14 @@ function ServiceDetailsContent() {
         <h1 className="font-serif text-4xl">
           {error ? "Unable to load service" : "Service not found"}
         </h1>
+
         <p className="mt-3 text-sm text-[#10284C]/65">
           This service may be unavailable or inactive.
         </p>
+
         <Link
           href="/#services"
-          className="mt-6 inline-flex items-center gap-2 text-sm font-semibold"
+          className="mt-6 inline-flex items-center gap-2 text-sm font-semibold transition hover:text-[#B58A12]"
         >
           <ArrowLeft size={17} />
           Back to Services
@@ -112,10 +119,19 @@ function ServiceDetailsContent() {
     );
   }
 
-  const whatsappMessage = `Hello SOHOJ, I am interested in ${service.title}. Please share more details.`;
-  const whatsappUrl = `https://wa.me/${BUSINESS_PHONE}?text=${encodeURIComponent(
-    whatsappMessage
-  )}`;
+  const whatsappMessage = [
+    "Hello SAHAJ!",
+    "",
+    `I am interested in ${service.title}.`,
+    `Service details: ${service.description}`,
+    "",
+    "Please share more details and pricing.",
+  ].join("\n");
+
+  const whatsappUrl =
+    `https://wa.me/${BUSINESS_PHONE}?text=${encodeURIComponent(
+      whatsappMessage
+    )}`;
 
   return (
     <main className="min-h-screen bg-white text-[#10284C]">
@@ -135,6 +151,7 @@ function ServiceDetailsContent() {
               alt={service.title}
               className="aspect-[4/3] w-full object-cover"
             />
+
             <span className="absolute left-5 top-5 bg-white px-4 py-3 text-xs font-bold tracking-widest">
               SERVICE {String(service.number).padStart(2, "0")}
             </span>
@@ -156,7 +173,10 @@ function ServiceDetailsContent() {
 
             {service.details?.trim() && (
               <section className="mt-8 border-t border-[#10284C]/10 pt-7">
-                <h2 className="font-serif text-3xl">About this service</h2>
+                <h2 className="font-serif text-3xl">
+                  About this service
+                </h2>
+
                 <div className="mt-4 whitespace-pre-line text-sm leading-8 text-[#10284C]/75">
                   {service.details}
                 </div>
@@ -166,7 +186,7 @@ function ServiceDetailsContent() {
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
               <a
                 href={`tel:+${BUSINESS_PHONE}`}
-                className="inline-flex items-center justify-center gap-3 bg-[#10284C] px-7 py-4 text-sm font-semibold text-white transition hover:bg-[#1B3B69]"
+                className="inline-flex items-center justify-center gap-3 bg-[#10284C] px-7 py-4 text-sm font-semibold text-white transition duration-300 hover:bg-[#1B3B69]"
               >
                 <Phone size={18} />
                 Call for Service
@@ -176,16 +196,28 @@ function ServiceDetailsContent() {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-3 border border-[#10284C]/20 px-7 py-4 text-sm font-semibold transition hover:border-[#DCAF24]"
+                aria-label={`Enquire about ${service.title} on WhatsApp`}
+                className="group inline-flex items-center justify-center gap-3 rounded-lg border border-[#00A859] bg-[#00A859] px-7 py-4 text-sm font-semibold text-white shadow-lg shadow-green-600/15 transition-all duration-300 hover:-translate-y-0.5 hover:border-[#008F4C] hover:bg-[#008F4C] hover:shadow-xl"
               >
-                Enquire on WhatsApp
-                <ArrowUpRight size={18} />
+                <FaWhatsapp
+                  size={23}
+                  aria-hidden="true"
+                  className="shrink-0"
+                />
+
+                <span>Enquire on WhatsApp</span>
+
+                <ArrowUpRight
+                  size={18}
+                  aria-hidden="true"
+                  className="shrink-0 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
+                />
               </a>
             </div>
 
             <p className="mt-6 text-xs leading-6 text-[#10284C]/55">
               Contact{" "}
-              <strong className="font-bold">SOHOJ</strong> to discuss your
+              <strong className="font-bold">SAHAJ</strong> to discuss your
               requirements and arrange your service in Tezpur, Assam.
             </p>
           </div>

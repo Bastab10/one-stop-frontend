@@ -4,13 +4,10 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ArrowUpRight, Phone } from "lucide-react";
-import { FaWhatsapp } from "react-icons/fa";
 
 const BUSINESS_PHONE = "916026936104";
-
 const API_URL =
-  process.env.NEXT_PUBLIC_API_URL ||
-  "https://one-stop-backend-production.up.railway.app/api";
+  process.env.NEXT_PUBLIC_API_URL || "https://one-stop-backend-production.up.railway.app/api";
 
 type Service = {
   _id: string;
@@ -64,29 +61,12 @@ export default function Services() {
     return () => controller.abort();
   }, []);
 
-  function getWhatsAppLink(service: Service) {
-    const message = [
-      "Hello SAHAJ!",
-      "",
-      `I would like to enquire about: ${service.title}`,
-      "",
-      `Service details: ${service.description}`,
-      "",
-      "Please share more information about this service.",
-    ].join("\n");
-
-    return `https://wa.me/${BUSINESS_PHONE}?text=${encodeURIComponent(
-      message
-    )}`;
-  }
-
   return (
     <section
       id="services"
       className="bg-white py-20 text-[#10284C] sm:py-28"
     >
       <div className="mx-auto max-w-[1600px] px-5 sm:px-8 lg:px-14 xl:px-20">
-        {/* Section heading */}
         <div className="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between lg:mb-16">
           <div>
             <p className="mb-5 flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.22em] sm:text-xs">
@@ -102,9 +82,10 @@ export default function Services() {
               </span>
             </h2>
           </div>
+
+        
         </div>
 
-        {/* Loading, error and empty states */}
         {loading ? (
           <p className="py-10 text-sm text-[#10284C]/65">
             Loading services...
@@ -122,9 +103,8 @@ export default function Services() {
             {services.map((service) => (
               <article
                 key={service._id}
-                className="group flex h-full flex-col overflow-hidden border border-[#10284C]/10 bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#10284C]/5"
+                className="group flex h-full flex-col overflow-hidden border border-[#10284C]/10 bg-white"
               >
-                {/* Service image */}
                 <Link
                   href={`/services/${service._id}`}
                   aria-label={`View details for ${service.title}`}
@@ -146,7 +126,6 @@ export default function Services() {
                   </span>
                 </Link>
 
-                {/* Service details */}
                 <div className="flex flex-1 flex-col p-5 sm:p-6">
                   <Link
                     href={`/services/${service._id}`}
@@ -161,41 +140,18 @@ export default function Services() {
                     </p>
                   </Link>
 
-                  {/* Action buttons */}
-                  <div className="mt-auto space-y-3 pt-6">
-                    {/* Call button */}
-                    <a
-                      href={`tel:+${BUSINESS_PHONE}`}
-                      aria-label={`Call for ${service.title}`}
-                      className="flex w-full items-center justify-center gap-2 border border-[#10284C]/15 px-3 py-3 text-xs font-bold text-[#10284C] transition-colors duration-300 hover:border-[#10284C] hover:bg-[#10284C] hover:text-white"
-                    >
-                      <Phone size={16} />
+                  <a
+                    href={`tel:+${BUSINESS_PHONE}`}
+                    aria-label={`Call for ${service.title}`}
+                    className="mt-auto flex items-center justify-between border-t border-[#10284C]/10 pt-4 text-[10px] font-bold uppercase tracking-[0.12em] text-[#B58A12]"
+                  >
+                    <span className="flex items-center gap-2">
+                      <Phone size={13} />
                       Call for Service
-                    </a>
+                    </span>
 
-                    {/* WhatsApp button */}
-                    <a
-                      href={getWhatsAppLink(service)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`Enquire about ${service.title} on WhatsApp`}
-                      className="group/whatsapp flex w-full items-center justify-center gap-2 rounded-lg bg-[#00A859] px-3 py-3 text-xs font-bold text-white shadow-md shadow-green-600/10 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#008F4C] hover:shadow-lg"
-                    >
-                      <FaWhatsapp
-                        size={19}
-                        aria-hidden="true"
-                        className="shrink-0"
-                      />
-
-                      <span>Enquire on WhatsApp</span>
-
-                      <ArrowUpRight
-                        size={15}
-                        aria-hidden="true"
-                        className="shrink-0 transition-transform duration-300 group-hover/whatsapp:translate-x-0.5 group-hover/whatsapp:-translate-y-0.5"
-                      />
-                    </a>
-                  </div>
+                    <ArrowUpRight size={15} />
+                  </a>
                 </div>
               </article>
             ))}
