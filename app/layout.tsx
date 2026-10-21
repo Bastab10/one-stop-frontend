@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.sahajservices.in"),
+  metadataBase: new URL("https://www.sohojservices.in"),
   title: "SOHOJ (সহজ) – A Unique Way to Solve Your Problems with Just One Click in Tezpur",
   description:
     "Discover trusted home and everyday services with SOHOJ in Tezpur, including electrician, AC repair, carpentry, painting, catering, and more.",
