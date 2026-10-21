@@ -3,7 +3,7 @@
 import { Mail, Phone } from "lucide-react";
 
 const BUSINESS_PHONE = "916026936104";
-const CONTACT_EMAIL = "sahajservices@gmail.com";
+const CONTACT_EMAIL = "sohojservices@gmail.com";
 
 export default function TopBar() {
   return (

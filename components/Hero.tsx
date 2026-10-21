@@ -53,7 +53,7 @@ export default function Hero() {
 
           <p className="mt-5 max-w-[450px] text-sm leading-6 text-[#415775] sm:mt-6 sm:text-base sm:leading-7">
             From painting, repairs and home cooking to catering, creative work
-            and special occasions <strong className="font-bold">SAHAJ</strong> brings your everyday service needs
+            and special occasions <strong className="font-bold">SOHOJ</strong> brings your everyday service needs
             together in one place.
           </p>
 
@@ -165,7 +165,7 @@ export default function Hero() {
               Simpler solutions.
             </p>
             <p className="mt-1.5 text-[7px] font-bold uppercase tracking-[0.15em] text-[#10294C]/75">
-              — <strong className="font-bold">SAHAJ</strong>
+              — <strong className="font-bold">SOHOJ</strong>
             </p>
           </div>
 

@@ -51,7 +51,7 @@ export default function AdminLoginPage() {
     <main className="flex min-h-screen items-center justify-center bg-[#F8F7F3] px-5 py-10 text-[#10284C]">
       <section className="w-full max-w-md border border-[#10284C]/10 bg-white p-7 shadow-sm sm:p-10">
         <div className="mb-8 text-center">
-          <p className="font-serif text-3xl"><strong className="font-bold">SAHAJ</strong>·</p>
+          <p className="font-serif text-3xl"><strong className="font-bold">SOHOJ</strong>·</p>
           <p className="mt-2 text-sm text-[#10284C]/60">
             One Stop Service Solutions
           </p>

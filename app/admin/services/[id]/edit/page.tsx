@@ -204,7 +204,7 @@ function EditServiceContent() {
       <div className="mx-auto max-w-3xl">
         <header className="flex items-center justify-between border-b border-[#10284C]/10 pb-6">
           <div>
-            <p className="font-serif text-2xl">SAHAJ</p>
+            <p className="font-serif text-2xl">SOHOJ</p>
             <p className="text-sm text-[#10284C]/60">Edit Service</p>
           </div>
           <button

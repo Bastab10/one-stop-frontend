@@ -13,7 +13,7 @@ export default function About() {
           <div>
             <p className="mb-5 flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.22em] text-[#10284C]/60 sm:text-xs">
               <span className="h-px w-9 bg-[#DCAF24]" />
-              About <strong className="font-bold">SAHAJ</strong>
+              About <strong className="font-bold">SOHOJ</strong>
             </p>
 
             <h2 className="font-serif text-5xl font-normal leading-[1.02] tracking-[-0.05em] sm:text-6xl lg:text-7xl">
@@ -25,7 +25,7 @@ export default function About() {
             </h2>
 
             <p className="mt-6 max-w-lg text-base leading-8 text-[#10284C]/70 sm:text-lg">
-            <strong className="font-bold">SAHAJ</strong> brings the services you need together in one place.
+            <strong className="font-bold">SOHOJ</strong> brings the services you need together in one place.
               From everyday home needs to special occasions, we make it
               easier to find the right service without searching everywhere.
             </p>
@@ -45,7 +45,7 @@ export default function About() {
               <br />
               Different solutions.
               <br />
-              <span className="italic text-[#DCAF24]">One <strong className="font-bold">SAHAJ</strong>.</span>
+              <span className="italic text-[#DCAF24]">One <strong className="font-bold">SOHOJ</strong>.</span>
             </p>
 
             <div className="mt-7 h-px w-full bg-[#10284C]/10" />
@@ -57,7 +57,7 @@ export default function About() {
             </p>
 
             <p className="mt-6 text-xs font-bold uppercase tracking-[0.18em] text-[#10284C]/55">
-              <strong className="font-bold">SAHAJ</strong> · One Stop Service Solutions
+              <strong className="font-bold">SOHOJ</strong> · One Stop Service Solutions
             </p>
           </div>
         </div>

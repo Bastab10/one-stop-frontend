@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 
 const BUSINESS_PHONE = "916026936104";
-const BUSINESS_EMAIL = "sahajservices@gmail.com";
+const BUSINESS_EMAIL = "sohojservices@gmail.com";
 
 const services = [
   "Painting Services",
@@ -58,7 +58,7 @@ function ContactContent() {
     }
 
     const enquiry = [
-      "HelloSAHAJ! I would like to enquire about your services.",
+      "Hello SOHOJ! I would like to enquire about your services.",
       "",
       `Name: ${name}`,
       `Customer Phone: ${phone}`,
@@ -97,7 +97,7 @@ function ContactContent() {
             <p className="max-w-md text-sm leading-7 text-[#10284C]/65 sm:text-base">
               No need to search everywhere. Tell us what you need, and let <b/>
 
-               <strong className="font-bold">SAHAJ</strong> help you explore the
+               <strong className="font-bold">SOHOJ</strong> help you explore the
               right service for your home, daily needs or special occasion.
             </p>
           </div>
@@ -325,7 +325,7 @@ function ContactContent() {
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#B58A12]">
-                <strong className="font-bold">SAHAJ</strong>
+                <strong className="font-bold">SOHOJ</strong>
               </p>
 
               <h3 className="mt-3 font-serif text-3xl leading-tight sm:text-4xl">
