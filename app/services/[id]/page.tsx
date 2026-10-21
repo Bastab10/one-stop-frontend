@@ -120,7 +120,7 @@ function ServiceDetailsContent() {
   }
 
   const whatsappMessage = [
-    "Hello SAHAJ!",
+    "Hello SOHOJ!",
     "",
     `I am interested in ${service.title}.`,
     `Service details: ${service.description}`,
@@ -217,7 +217,7 @@ function ServiceDetailsContent() {
 
             <p className="mt-6 text-xs leading-6 text-[#10284C]/55">
               Contact{" "}
-              <strong className="font-bold">SAHAJ</strong> to discuss your
+              <strong className="font-bold">SOHOJ</strong> to discuss your
               requirements and arrange your service in Tezpur, Assam.
             </p>
           </div>
