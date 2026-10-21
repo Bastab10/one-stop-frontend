@@ -13,7 +13,7 @@ type Service = {
 };
 
 const API_URL =
-  process.env.NEXT_PUBLIC_API_URL || "https://one-stop-backend-production.up.railway.app/api";
+  process.env.NEXT_PUBLIC_API_URL || "https://one-stop-backend-sooty.vercel.app.app/api";
 
 export default function AdminServicesPage() {
   const router = useRouter();
