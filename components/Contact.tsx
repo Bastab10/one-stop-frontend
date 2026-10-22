@@ -39,7 +39,8 @@ function ContactContent() {
 
   const serviceFromUrl =
     services.find(
-      (item) => item.toLowerCase() === requestedService?.trim().toLowerCase()
+      (item) =>
+        item.toLowerCase() === requestedService?.trim().toLowerCase()
     ) || "";
 
   const [name, setName] = useState("");
@@ -81,7 +82,6 @@ function ContactContent() {
       className="scroll-mt-24 bg-white py-16 text-[#10284C] sm:py-20 lg:py-24"
     >
       <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-14 xl:px-20">
-        {/* Section Heading */}
         <div className="mb-12 border-b border-[#10284C]/10 pb-10 sm:mb-16 sm:pb-12">
           <p className="mb-5 flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.22em] text-[#10284C]/60 sm:text-xs">
             <span className="h-px w-9 bg-[#DCAF24]" />
@@ -99,9 +99,7 @@ function ContactContent() {
           </div>
         </div>
 
-        {/* Contact Information and Enquiry Form */}
         <div className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr] lg:gap-20">
-          {/* Left Side */}
           <div>
             <h3 className="font-serif text-3xl sm:text-4xl">
               Get in touch
@@ -113,10 +111,9 @@ function ContactContent() {
             </p>
 
             <div className="mt-8 space-y-0 border-t border-[#10284C]/10">
-              {/* Location */}
               <div className="flex gap-4 border-b border-[#10284C]/10 py-5">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center bg-[#F5CA35]/20">
-                  <MapPin size={20} className="text-[#9A7410]" />
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center bg-[#EA4335]/10">
+                  <MapPin size={20} className="text-[#EA4335]" />
                 </div>
 
                 <div>
@@ -127,44 +124,41 @@ function ContactContent() {
                 </div>
               </div>
 
-              {/* Phone */}
               <div className="flex gap-4 border-b border-[#10284C]/10 py-5">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center bg-[#F5CA35]/20">
-                  <Phone size={20} className="text-[#9A7410]" />
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center bg-[#16A34A]/10">
+                  <Phone size={20} className="text-[#16A34A]" />
                 </div>
 
                 <div>
                   <h4 className="text-sm font-semibold">Call Us</h4>
                   <a
                     href={`tel:+${BUSINESS_PHONE}`}
-                    className="mt-1 block text-sm text-[#10284C]/65 transition hover:text-[#B58A12]"
+                    className="mt-1 block text-sm text-[#10284C]/65 transition hover:text-[#16A34A]"
                   >
                     +{BUSINESS_PHONE}
                   </a>
                 </div>
               </div>
 
-              {/* Email */}
               <div className="flex gap-4 border-b border-[#10284C]/10 py-5">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center bg-[#F5CA35]/20">
-                  <Mail size={20} className="text-[#9A7410]" />
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center bg-[#EA4335]/10">
+                  <Mail size={20} className="text-[#EA4335]" />
                 </div>
 
                 <div>
                   <h4 className="text-sm font-semibold">Email Us</h4>
                   <a
                     href={`mailto:${BUSINESS_EMAIL}`}
-                    className="mt-1 block break-all text-sm text-[#10284C]/65 transition hover:text-[#B58A12]"
+                    className="mt-1 block break-all text-sm text-[#10284C]/65 transition hover:text-[#EA4335]"
                   >
                     {BUSINESS_EMAIL}
                   </a>
                 </div>
               </div>
 
-              {/* Working Hours */}
               <div className="flex gap-4 border-b border-[#10284C]/10 py-5">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center bg-[#F5CA35]/20">
-                  <Clock3 size={20} className="text-[#9A7410]" />
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center bg-[#7C3AED]/10">
+                  <Clock3 size={20} className="text-[#7C3AED]" />
                 </div>
 
                 <div>
@@ -178,11 +172,10 @@ function ContactContent() {
               </div>
             </div>
 
-            {/* WhatsApp Information */}
             <div className="mt-7 flex items-start gap-3 bg-[#F8F7F3] p-5">
               <MessageCircle
                 size={20}
-                className="mt-0.5 shrink-0 text-[#9A7410]"
+                className="mt-0.5 shrink-0 text-[#25D366]"
               />
 
               <p className="text-sm leading-6 text-[#10284C]/70">
@@ -195,7 +188,6 @@ function ContactContent() {
             </div>
           </div>
 
-          {/* Right Side: Enquiry Form */}
           <div className="border border-[#10284C]/10 p-5 sm:p-8 lg:p-10">
             <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#B58A12]">
               Service Enquiry
@@ -326,7 +318,7 @@ function ContactContent() {
 
               <button
                 type="submit"
-                className="group flex w-full items-center justify-center gap-3 rounded-xl bg-[#00A859] px-5 py-5 text-sm font-bold text-white shadow-lg shadow-green-600/15 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#008F4C] hover:shadow-xl active:translate-y-0 sm:text-base"
+                className="group flex w-full items-center justify-center gap-3 rounded-xl bg-[#25D366] px-5 py-5 text-sm font-bold text-white shadow-lg shadow-green-600/15 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#1DA851] hover:shadow-xl active:translate-y-0 sm:text-base"
               >
                 <FaWhatsapp
                   size={28}
