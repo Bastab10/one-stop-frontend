@@ -4,7 +4,6 @@
 import { Suspense, useState } from "react";
 import type { FormEvent } from "react";
 import { useSearchParams } from "next/navigation";
-import Link from "next/link";
 import {
   ArrowUpRight,
   Phone,
@@ -82,7 +81,7 @@ function ContactContent() {
       className="scroll-mt-24 bg-white py-16 text-[#10284C] sm:py-20 lg:py-24"
     >
       <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-14 xl:px-20">
-        {/* Section heading */}
+        {/* Section Heading */}
         <div className="mb-12 border-b border-[#10284C]/10 pb-10 sm:mb-16 sm:pb-12">
           <p className="mb-5 flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.22em] text-[#10284C]/60 sm:text-xs">
             <span className="h-px w-9 bg-[#DCAF24]" />
@@ -97,18 +96,12 @@ function ContactContent() {
                 We&apos;re here to help.
               </span>
             </h2>
-
-            <p className="max-w-md text-sm leading-7 text-[#10284C]/65 sm:text-base">
-              No need to search everywhere. Tell us what you need, and let{" "}
-              <strong className="font-bold">SOHOJ</strong> help you explore the
-              right service for your home, daily needs or special occasion.
-            </p>
           </div>
         </div>
 
-        {/* Contact information and enquiry form */}
+        {/* Contact Information and Enquiry Form */}
         <div className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr] lg:gap-20">
-          {/* Left side */}
+          {/* Left Side */}
           <div>
             <h3 className="font-serif text-3xl sm:text-4xl">
               Get in touch
@@ -168,7 +161,7 @@ function ContactContent() {
                 </div>
               </div>
 
-              {/* Working hours */}
+              {/* Working Hours */}
               <div className="flex gap-4 border-b border-[#10284C]/10 py-5">
                 <div className="flex h-11 w-11 shrink-0 items-center justify-center bg-[#F5CA35]/20">
                   <Clock3 size={20} className="text-[#9A7410]" />
@@ -185,7 +178,7 @@ function ContactContent() {
               </div>
             </div>
 
-            {/* WhatsApp information box */}
+            {/* WhatsApp Information */}
             <div className="mt-7 flex items-start gap-3 bg-[#F8F7F3] p-5">
               <MessageCircle
                 size={20}
@@ -202,7 +195,7 @@ function ContactContent() {
             </div>
           </div>
 
-          {/* Right side: enquiry form */}
+          {/* Right Side: Enquiry Form */}
           <div className="border border-[#10284C]/10 p-5 sm:p-8 lg:p-10">
             <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#B58A12]">
               Service Enquiry
@@ -217,7 +210,6 @@ function ContactContent() {
             </p>
 
             <form onSubmit={handleSubmit} className="mt-8 space-y-5">
-              {/* Name and phone */}
               <div className="grid gap-5 sm:grid-cols-2">
                 <div>
                   <label
@@ -264,7 +256,6 @@ function ContactContent() {
                 </div>
               </div>
 
-              {/* Email */}
               <div>
                 <label
                   htmlFor="contact-email"
@@ -285,7 +276,6 @@ function ContactContent() {
                 />
               </div>
 
-              {/* Service selection */}
               <div>
                 <label
                   htmlFor="contact-service"
@@ -314,7 +304,6 @@ function ContactContent() {
                 </select>
               </div>
 
-              {/* Requirement */}
               <div>
                 <label
                   htmlFor="contact-message"
@@ -335,7 +324,6 @@ function ContactContent() {
                 />
               </div>
 
-              {/* WhatsApp CTA */}
               <button
                 type="submit"
                 className="group flex w-full items-center justify-center gap-3 rounded-xl bg-[#00A859] px-5 py-5 text-sm font-bold text-white shadow-lg shadow-green-600/15 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#008F4C] hover:shadow-xl active:translate-y-0 sm:text-base"
@@ -354,36 +342,7 @@ function ContactContent() {
                   className="shrink-0 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
                 />
               </button>
-
-              <p className="text-center text-xs leading-5 text-[#10284C]/50">
-                WhatsApp will open with your enquiry ready to send. You can
-                review it before sending.
-              </p>
             </form>
-          </div>
-        </div>
-
-        {/* Bottom CTA */}
-        <div className="mt-16 border-t border-[#10284C]/10 pt-7 sm:mt-20">
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#B58A12]">
-                <strong className="font-bold">SOHOJ</strong>
-              </p>
-
-              <h3 className="mt-3 font-serif text-3xl leading-tight sm:text-4xl">
-                Less searching.
-                <span className="italic text-[#DCAF24]"> More living.</span>
-              </h3>
-            </div>
-
-            <Link
-              href="/#services"
-              className="inline-flex items-center gap-2 text-sm font-semibold transition-colors hover:text-[#B58A12]"
-            >
-              Explore all services
-              <ArrowUpRight size={17} />
-            </Link>
           </div>
         </div>
       </div>

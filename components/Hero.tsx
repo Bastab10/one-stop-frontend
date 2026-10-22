@@ -52,9 +52,10 @@ export default function Hero() {
           </h1>
 
           <p className="mt-5 max-w-[450px] text-sm leading-6 text-[#415775] sm:mt-6 sm:text-base sm:leading-7">
-            From painting, repairs and home cooking to catering, creative work
-            and special occasions <strong className="font-bold">SOHOJ</strong> brings your everyday service needs
-            together in one place.
+            One place. Every need. From home repairs and cooking to creative
+            services and celebrations,{" "}
+            <strong className="font-bold">SOHOJ</strong> makes life easier,
+            every day.
           </p>
 
           <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
@@ -167,10 +168,6 @@ export default function Hero() {
             <p className="mt-1.5 text-[7px] font-bold uppercase tracking-[0.15em] text-[#10294C]/75">
               — <strong className="font-bold">SOHOJ</strong>
             </p>
-          </div>
-
-          <div className="absolute left-[3%] top-0 z-30 flex h-10 w-10 items-center justify-center rounded-full bg-[#DCAF24] font-serif text-xl font-bold text-[#10294C] shadow-md sm:h-12 sm:w-12 sm:text-2xl">
-            স
           </div>
         </div>
       </div>
