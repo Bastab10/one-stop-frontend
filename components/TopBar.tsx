@@ -12,26 +12,26 @@ export default function TopBar() {
         <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
           <a
             href={`tel:+${BUSINESS_PHONE}`}
-            className="inline-flex items-center gap-2 text-xs font-medium text-white/85 transition-colors hover:text-[#E8C45A] sm:text-sm"
+            className="inline-flex items-center gap-2 text-xs font-medium text-white/85 transition-colors hover:text-[#F472B6] sm:text-sm"
           >
-            <Phone size={14} className="text-[#E8C45A]" />
+            <Phone size={14} className="text-[#C90070]" />
             <span>+91 60269 36104</span>
           </a>
 
           <a
             href={`mailto:${CONTACT_EMAIL}`}
-            className="inline-flex items-center gap-2 text-xs font-medium text-white/85 transition-colors hover:text-[#E8C45A] sm:text-sm"
+            className="inline-flex items-center gap-2 text-xs font-medium text-white/85 transition-colors hover:text-[#F472B6] sm:text-sm"
           >
-            <Mail size={15} className="text-[#E8C45A]" />
+            <Mail size={15} className="text-[#C90070]" />
             <span>{CONTACT_EMAIL}</span>
           </a>
         </div>
 
         <div className="flex items-center gap-3">
-          <span className="hidden h-6 w-[2px] bg-[#DCAF24] sm:block" />
+          <span className="hidden h-6 w-[2px] bg-[#C90070] sm:block" />
 
           <p className="text-[11px] font-medium leading-relaxed tracking-[0.015em] text-white sm:text-xs lg:text-[13px]">
-            <span className="font-semibold text-[#E8C45A]">
+            <span className="font-semibold text-[#F472B6]">
               Small things
             </span>{" "}
             <span className="font-normal">make perfection.</span>{" "}
@@ -41,7 +41,7 @@ export default function TopBar() {
             <span className="font-normal text-white/80">
               is not a
             </span>{" "}
-            <span className="font-bold text-[#E8C45A]">
+            <span className="font-bold text-[#F472B6]">
               small thing.
             </span>
           </p>

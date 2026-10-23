@@ -1,4 +1,3 @@
-
 "use client";
 
 import { Suspense, useEffect, useState } from "react";
@@ -110,7 +109,7 @@ function ServiceDetailsContent() {
 
         <Link
           href="/#services"
-          className="mt-6 inline-flex items-center gap-2 text-sm font-semibold transition hover:text-[#B58A12]"
+          className="mt-6 inline-flex items-center gap-2 text-sm font-semibold transition hover:text-[#C90070]"
         >
           <ArrowLeft size={17} />
           Back to Services
@@ -138,28 +137,28 @@ function ServiceDetailsContent() {
       <div className="mx-auto max-w-[1400px] px-5 py-10 sm:px-8 sm:py-16 lg:px-14">
         <Link
           href="/#services"
-          className="mb-10 inline-flex items-center gap-2 text-sm font-semibold text-[#10284C]/70 transition hover:text-[#B58A12]"
+          className="mb-10 inline-flex items-center gap-2 text-sm font-semibold text-[#10284C]/70 transition hover:text-[#C90070]"
         >
           <ArrowLeft size={17} />
           Back to Services
         </Link>
 
         <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-16">
-          <div className="relative overflow-hidden bg-[#F8F7F3] lg:sticky lg:top-8">
+          <div className="relative overflow-hidden bg-[#FDF2F8] lg:sticky lg:top-8">
             <img
               src={service.image}
               alt={service.title}
               className="aspect-[4/3] w-full object-cover"
             />
 
-            <span className="absolute left-5 top-5 bg-white px-4 py-3 text-xs font-bold tracking-widest">
+            <span className="absolute left-5 top-5 bg-white px-4 py-3 text-xs font-bold tracking-widest text-[#C90070]">
               SERVICE {String(service.number).padStart(2, "0")}
             </span>
           </div>
 
           <div>
             <p className="mb-6 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.22em]">
-              <span className="h-px w-9 bg-[#DCAF24]" />
+              <span className="h-px w-9 bg-[#C90070]" />
               Discover what we do
             </p>
 
@@ -186,7 +185,7 @@ function ServiceDetailsContent() {
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
               <a
                 href={`tel:+${BUSINESS_PHONE}`}
-                className="inline-flex items-center justify-center gap-3 bg-[#10284C] px-7 py-4 text-sm font-semibold text-white transition duration-300 hover:bg-[#1B3B69]"
+                className="inline-flex items-center justify-center gap-3 bg-[#C90070] px-7 py-4 text-sm font-semibold text-white transition duration-300 hover:bg-[#A8005D]"
               >
                 <Phone size={18} />
                 Call for Service

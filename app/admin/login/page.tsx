@@ -4,7 +4,8 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 const API_URL =
-  process.env.NEXT_PUBLIC_API_URL || "https://one-stop-backend-sooty.vercel.app/api";
+  process.env.NEXT_PUBLIC_API_URL ||
+  "https://one-stop-backend-sooty.vercel.app/api";
 
 export default function AdminLoginPage() {
   const router = useRouter();
@@ -48,14 +49,20 @@ export default function AdminLoginPage() {
   }
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-[#F8F7F3] px-5 py-10 text-[#10284C]">
-      <section className="w-full max-w-md border border-[#10284C]/10 bg-white p-7 shadow-sm sm:p-10">
+    <main className="flex min-h-screen items-center justify-center bg-[#FDF2F8] px-5 py-10 text-[#10284C]">
+      <section className="w-full max-w-md border border-[#C90070]/15 bg-white p-7 shadow-sm sm:p-10">
         <div className="mb-8 text-center">
-          <p className="font-serif text-3xl"><strong className="font-bold">SOHOJ</strong>·</p>
+          <p className="font-serif text-3xl">
+            <strong className="font-bold">SOHOJ</strong>
+            <span className="text-[#C90070]">.</span>
+          </p>
+
           <p className="mt-2 text-sm text-[#10284C]/60">
             One Stop Service Solutions
           </p>
+
           <h1 className="mt-8 font-serif text-3xl">Admin Login</h1>
+
           <p className="mt-2 text-sm text-[#10284C]/60">
             Sign in to manage your services.
           </p>
@@ -69,6 +76,7 @@ export default function AdminLoginPage() {
             >
               Username
             </label>
+
             <input
               id="username"
               type="text"
@@ -76,7 +84,7 @@ export default function AdminLoginPage() {
               required
               value={username}
               onChange={(event) => setUsername(event.target.value)}
-              className="w-full border border-[#10284C]/20 px-4 py-3 outline-none focus:border-[#B58A12]"
+              className="w-full border border-[#10284C]/20 px-4 py-3 outline-none transition-colors focus:border-[#C90070]"
               placeholder="Enter admin username"
             />
           </div>
@@ -88,6 +96,7 @@ export default function AdminLoginPage() {
             >
               Password
             </label>
+
             <input
               id="password"
               type="password"
@@ -95,7 +104,7 @@ export default function AdminLoginPage() {
               required
               value={password}
               onChange={(event) => setPassword(event.target.value)}
-              className="w-full border border-[#10284C]/20 px-4 py-3 outline-none focus:border-[#B58A12]"
+              className="w-full border border-[#10284C]/20 px-4 py-3 outline-none transition-colors focus:border-[#C90070]"
               placeholder="Enter admin password"
             />
           </div>
@@ -109,7 +118,7 @@ export default function AdminLoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-[#10284C] px-5 py-3.5 font-semibold text-white hover:bg-[#1B3C68] disabled:cursor-not-allowed disabled:opacity-60"
+            className="w-full bg-[#C90070] px-5 py-3.5 font-semibold text-white transition-colors hover:bg-[#A8005D] disabled:cursor-not-allowed disabled:opacity-60"
           >
             {loading ? "Signing in..." : "Sign In"}
           </button>

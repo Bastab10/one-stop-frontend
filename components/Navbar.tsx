@@ -1,16 +1,9 @@
-
 "use client";
 
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  ArrowUpRight,
-  Menu,
-  X,
-  Phone,
-  Mail,
-} from "lucide-react";
+import { ArrowUpRight, Menu, X, Phone, Mail } from "lucide-react";
 
 const navLinks = [
   { label: "Home", href: "/#home" },
@@ -30,13 +23,13 @@ export default function Navbar() {
       <nav className="mx-auto flex h-[68px] max-w-[1600px] items-center justify-between gap-3 px-4 sm:h-[74px] sm:px-6 lg:h-[80px] lg:gap-5 lg:px-10">
         <Link
           href="/#home"
-          aria-label="সহজ — Home"
+          aria-label="SOHOJ Home"
           onClick={() => setMenuOpen(false)}
           className="relative block h-[54px] w-[165px] shrink-0 sm:h-[60px] sm:w-[200px] lg:h-[66px] lg:w-[230px]"
         >
           <Image
-            src="/images/shohoj-logoo.png"
-            alt="সহজ — One Stop Service Solutions"
+            src="/images/sohoj.png"
+            alt="SOHOJ — One Stop Service Solutions"
             fill
             priority
             sizes="(max-width: 640px) 165px, (max-width: 1024px) 200px, 230px"
@@ -49,7 +42,7 @@ export default function Navbar() {
             <Link
               key={link.label}
               href={link.href}
-              className="text-[11px] font-bold uppercase tracking-[0.07em] text-[#10294C] transition-colors hover:text-[#B88A00] xl:text-xs"
+              className="text-[11px] font-bold uppercase tracking-[0.07em] text-[#10294C] transition-colors hover:text-[#C90070] xl:text-xs"
             >
               {link.label}
             </Link>
@@ -59,7 +52,7 @@ export default function Navbar() {
         <div className="hidden shrink-0 items-center gap-2 lg:flex xl:gap-3">
           <a
             href={`tel:+${BUSINESS_PHONE}`}
-            className="inline-flex items-center justify-center gap-2 rounded-lg border border-[#10294C]/15 bg-white px-3 py-2.5 text-xs font-bold text-[#10294C] transition hover:border-[#DCAF24] hover:bg-[#FFFAEA] xl:px-4 xl:text-sm"
+            className="inline-flex items-center justify-center gap-2 rounded-lg border border-[#10294C]/15 bg-white px-3 py-2.5 text-xs font-bold text-[#10294C] transition hover:border-[#C90070] hover:bg-[#FDF2F8] xl:px-4 xl:text-sm"
           >
             <Phone size={15} />
             Call Now
@@ -67,7 +60,7 @@ export default function Navbar() {
 
           <a
             href={`mailto:${CONTACT_EMAIL}`}
-            className="inline-flex items-center justify-center gap-2 rounded-lg border border-[#10294C]/15 bg-white px-3 py-2.5 text-xs font-bold text-[#10294C] transition hover:border-[#DCAF24] hover:bg-[#FFFAEA] xl:px-4 xl:text-sm"
+            className="inline-flex items-center justify-center gap-2 rounded-lg border border-[#10294C]/15 bg-white px-3 py-2.5 text-xs font-bold text-[#10294C] transition hover:border-[#C90070] hover:bg-[#FDF2F8] xl:px-4 xl:text-sm"
           >
             <Mail size={15} />
             Email Us
@@ -75,7 +68,7 @@ export default function Navbar() {
 
           <Link
             href="/#contact"
-            className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#10294C] px-3 py-2.5 text-xs font-bold text-white transition hover:bg-[#1B3C68] xl:px-4 xl:text-sm"
+            className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#C90070] px-3 py-2.5 text-xs font-bold text-white transition hover:bg-[#A8005D] xl:px-4 xl:text-sm"
           >
             Book a Service
             <ArrowUpRight size={15} />
@@ -87,7 +80,7 @@ export default function Navbar() {
           onClick={() => setMenuOpen((prev) => !prev)}
           aria-label={menuOpen ? "Close navigation" : "Open navigation"}
           aria-expanded={menuOpen}
-          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[#10294C]/15 text-[#10294C] transition hover:border-[#DCAF24] hover:bg-[#FFF1C2] lg:hidden"
+          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[#10294C]/15 text-[#10294C] transition hover:border-[#C90070] hover:bg-[#FDF2F8] lg:hidden"
         >
           {menuOpen ? <X size={21} /> : <Menu size={21} />}
         </button>
@@ -101,7 +94,7 @@ export default function Navbar() {
                 key={link.label}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className="flex items-center justify-between border-b border-[#10294C]/10 py-3.5 text-sm font-bold text-[#10294C] transition-colors last:border-0 hover:text-[#B88A00]"
+                className="flex items-center justify-between border-b border-[#10294C]/10 py-3.5 text-sm font-bold text-[#10294C] transition-colors last:border-0 hover:text-[#C90070]"
               >
                 <span>{link.label}</span>
                 <span className="text-xs tracking-widest text-[#10294C]/40">
@@ -114,7 +107,7 @@ export default function Navbar() {
               <a
                 href={`tel:+${BUSINESS_PHONE}`}
                 onClick={() => setMenuOpen(false)}
-                className="flex items-center justify-center gap-2 rounded-lg border border-[#10294C]/15 bg-white px-3 py-3 text-xs font-bold text-[#10294C] transition hover:bg-[#FFFAEA]"
+                className="flex items-center justify-center gap-2 rounded-lg border border-[#10294C]/15 bg-white px-3 py-3 text-xs font-bold text-[#10294C] transition hover:bg-[#FDF2F8]"
               >
                 <Phone size={15} />
                 Call Now
@@ -123,7 +116,7 @@ export default function Navbar() {
               <a
                 href={`mailto:${CONTACT_EMAIL}`}
                 onClick={() => setMenuOpen(false)}
-                className="flex items-center justify-center gap-2 rounded-lg border border-[#10294C]/15 bg-white px-3 py-3 text-xs font-bold text-[#10294C] transition hover:bg-[#FFFAEA]"
+                className="flex items-center justify-center gap-2 rounded-lg border border-[#10294C]/15 bg-white px-3 py-3 text-xs font-bold text-[#10294C] transition hover:bg-[#FDF2F8]"
               >
                 <Mail size={15} />
                 Email Us
@@ -132,7 +125,7 @@ export default function Navbar() {
               <Link
                 href="/#contact"
                 onClick={() => setMenuOpen(false)}
-                className="col-span-2 flex items-center justify-center gap-2 rounded-lg bg-[#10294C] px-3 py-3 text-xs font-bold text-white transition hover:bg-[#1B3C68]"
+                className="col-span-2 flex items-center justify-center gap-2 rounded-lg bg-[#C90070] px-3 py-3 text-xs font-bold text-white transition hover:bg-[#A8005D]"
               >
                 Book a Service
                 <ArrowUpRight size={15} />

@@ -1,11 +1,11 @@
-
 "use client";
 
 import { Suspense, useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 
 const API_URL =
-  process.env.NEXT_PUBLIC_API_URL || "https://one-stop-backend-sooty.vercel.app.app/api";
+  process.env.NEXT_PUBLIC_API_URL ||
+  "https://one-stop-backend-sooty.vercel.app.app/api";
 
 type Service = {
   _id: string;
@@ -21,7 +21,7 @@ export default function EditServicePage() {
   return (
     <Suspense
       fallback={
-        <main className="min-h-screen bg-[#F8F7F3] p-8 text-[#10284C]">
+        <main className="min-h-screen bg-[#FDF2F8] p-8 text-[#10284C]">
           Loading edit page...
         </main>
       }
@@ -176,7 +176,7 @@ function EditServiceContent() {
 
   if (loading) {
     return (
-      <main className="min-h-screen bg-[#F8F7F3] p-8 text-[#10284C]">
+      <main className="min-h-screen bg-[#FDF2F8] p-8 text-[#10284C]">
         Loading service...
       </main>
     );
@@ -184,14 +184,15 @@ function EditServiceContent() {
 
   if (!service) {
     return (
-      <main className="min-h-screen bg-[#F8F7F3] p-8 text-[#10284C]">
+      <main className="min-h-screen bg-[#FDF2F8] p-8 text-[#10284C]">
         <p role="alert" className="text-red-700">
           {error || "Service not found."}
         </p>
+
         <button
           type="button"
           onClick={() => router.push("/admin/services")}
-          className="mt-4 border px-4 py-2"
+          className="mt-4 border border-[#C90070]/30 px-4 py-2 transition hover:bg-[#C90070] hover:text-white"
         >
           Back to Services
         </button>
@@ -200,42 +201,47 @@ function EditServiceContent() {
   }
 
   return (
-    <main className="min-h-screen bg-[#F8F7F3] px-5 py-8 text-[#10284C] sm:px-8">
+    <main className="min-h-screen bg-[#FDF2F8] px-5 py-8 text-[#10284C] sm:px-8">
       <div className="mx-auto max-w-3xl">
         <header className="flex items-center justify-between border-b border-[#10284C]/10 pb-6">
           <div>
-            <p className="font-serif text-2xl">SOHOJ</p>
+            <p className="font-serif text-2xl">
+              SOHOJ<span className="text-[#C90070]">.</span>
+            </p>
             <p className="text-sm text-[#10284C]/60">Edit Service</p>
           </div>
+
           <button
             type="button"
             onClick={() => router.push("/admin/services")}
-            className="border px-4 py-2 text-sm"
+            className="border border-[#10284C]/15 px-4 py-2 text-sm transition hover:border-[#C90070] hover:text-[#C90070]"
           >
             Back
           </button>
         </header>
 
         <h1 className="mt-8 font-serif text-4xl">Edit Service</h1>
+
         <p className="mt-2 text-sm text-[#10284C]/60">
           Service No. {service.number}
         </p>
 
         <form
           onSubmit={handleSubmit}
-          className="mt-8 space-y-6 border border-[#10284C]/10 bg-white p-6 sm:p-8"
+          className="mt-8 space-y-6 border border-[#C90070]/10 bg-white p-6 sm:p-8"
         >
           <div>
             <label htmlFor="title" className="mb-2 block text-sm font-semibold">
               Service Name
             </label>
+
             <input
               id="title"
               value={title}
               onChange={(event) => setTitle(event.target.value)}
               maxLength={100}
               required
-              className="w-full border px-4 py-3 outline-none focus:border-[#B58A12]"
+              className="w-full border border-[#10284C]/15 px-4 py-3 outline-none transition-colors focus:border-[#C90070]"
             />
           </div>
 
@@ -246,6 +252,7 @@ function EditServiceContent() {
             >
               Short Description
             </label>
+
             <textarea
               id="description"
               value={description}
@@ -253,8 +260,9 @@ function EditServiceContent() {
               rows={3}
               maxLength={300}
               required
-              className="w-full resize-y border px-4 py-3 outline-none focus:border-[#B58A12]"
+              className="w-full resize-y border border-[#10284C]/15 px-4 py-3 outline-none transition-colors focus:border-[#C90070]"
             />
+
             <p className="mt-1 text-right text-xs text-[#10284C]/50">
               {description.length}/300 characters
             </p>
@@ -267,6 +275,7 @@ function EditServiceContent() {
             >
               Detailed Information
             </label>
+
             <textarea
               id="details"
               value={details}
@@ -274,8 +283,9 @@ function EditServiceContent() {
               rows={7}
               maxLength={5000}
               placeholder="Describe the service in detail..."
-              className="w-full resize-y border px-4 py-3 outline-none focus:border-[#B58A12]"
+              className="w-full resize-y border border-[#10284C]/15 px-4 py-3 outline-none transition-colors focus:border-[#C90070]"
             />
+
             <p className="mt-1 text-right text-xs text-[#10284C]/50">
               {details.length}/5000 characters
             </p>
@@ -283,6 +293,7 @@ function EditServiceContent() {
 
           <div>
             <p className="mb-2 text-sm font-semibold">Current Image</p>
+
             <img
               src={imageUrl}
               alt={title}
@@ -292,6 +303,7 @@ function EditServiceContent() {
             <label htmlFor="image" className="mb-2 block text-sm font-semibold">
               Replace Image (Optional)
             </label>
+
             <input
               id="image"
               type="file"
@@ -309,8 +321,9 @@ function EditServiceContent() {
                 setError("");
                 setImageFile(file);
               }}
-              className="w-full border p-3 text-sm"
+              className="w-full border border-[#10284C]/15 p-3 text-sm file:mr-4 file:border-0 file:bg-[#FDF2F8] file:px-3 file:py-2 file:font-semibold file:text-[#C90070]"
             />
+
             <p className="mt-2 text-xs text-[#10284C]/60">
               JPG, PNG or WebP. Maximum size: 5 MB.
             </p>
@@ -321,7 +334,7 @@ function EditServiceContent() {
               type="checkbox"
               checked={active}
               onChange={(event) => setActive(event.target.checked)}
-              className="h-4 w-4"
+              className="h-4 w-4 accent-[#C90070]"
             />
             Active — show this service on the website
           </label>
@@ -335,7 +348,7 @@ function EditServiceContent() {
           <button
             type="submit"
             disabled={saving}
-            className="bg-[#10284C] px-6 py-3 text-sm font-semibold text-white hover:bg-[#1B3C68] disabled:opacity-60"
+            className="bg-[#C90070] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#A8005D] disabled:cursor-not-allowed disabled:opacity-60"
           >
             {saving ? "Saving Changes..." : "Update Service"}
           </button>

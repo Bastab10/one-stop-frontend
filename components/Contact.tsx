@@ -1,4 +1,3 @@
-
 "use client";
 
 import { Suspense, useState } from "react";
@@ -31,7 +30,7 @@ const services = [
 ];
 
 const fieldClass =
-  "w-full rounded-none border border-[#10284C]/15 bg-white px-4 py-3.5 text-sm text-[#10284C] outline-none placeholder:text-[#10284C]/40 focus:border-[#B58A12]";
+  "w-full rounded-none border border-[#10284C]/15 bg-white px-4 py-3.5 text-sm text-[#10284C] outline-none placeholder:text-[#10284C]/40 focus:border-[#C90070]";
 
 function ContactContent() {
   const searchParams = useSearchParams();
@@ -84,7 +83,7 @@ function ContactContent() {
       <div className="mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-14 xl:px-20">
         <div className="mb-12 border-b border-[#10284C]/10 pb-10 sm:mb-16 sm:pb-12">
           <p className="mb-5 flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.22em] text-[#10284C]/60 sm:text-xs">
-            <span className="h-px w-9 bg-[#DCAF24]" />
+            <span className="h-px w-9 bg-[#C90070]" />
             Let&apos;s Talk
           </p>
 
@@ -92,7 +91,7 @@ function ContactContent() {
             <h2 className="font-serif text-5xl font-normal leading-[0.98] tracking-[-0.05em] sm:text-6xl lg:text-8xl">
               Need a service?
               <br />
-              <span className="italic text-[#DCAF24]">
+              <span className="italic text-[#C90070]">
                 We&apos;re here to help.
               </span>
             </h2>
@@ -112,8 +111,8 @@ function ContactContent() {
 
             <div className="mt-8 space-y-0 border-t border-[#10284C]/10">
               <div className="flex gap-4 border-b border-[#10284C]/10 py-5">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center bg-[#EA4335]/10">
-                  <MapPin size={20} className="text-[#EA4335]" />
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center bg-[#C90070]/10">
+                  <MapPin size={20} className="text-[#C90070]" />
                 </div>
 
                 <div>
@@ -133,7 +132,7 @@ function ContactContent() {
                   <h4 className="text-sm font-semibold">Call Us</h4>
                   <a
                     href={`tel:+${BUSINESS_PHONE}`}
-                    className="mt-1 block text-sm text-[#10284C]/65 transition hover:text-[#16A34A]"
+                    className="mt-1 block text-sm text-[#10284C]/65 transition hover:text-[#C90070]"
                   >
                     +{BUSINESS_PHONE}
                   </a>
@@ -141,15 +140,15 @@ function ContactContent() {
               </div>
 
               <div className="flex gap-4 border-b border-[#10284C]/10 py-5">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center bg-[#EA4335]/10">
-                  <Mail size={20} className="text-[#EA4335]" />
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center bg-[#C90070]/10">
+                  <Mail size={20} className="text-[#C90070]" />
                 </div>
 
                 <div>
                   <h4 className="text-sm font-semibold">Email Us</h4>
                   <a
                     href={`mailto:${BUSINESS_EMAIL}`}
-                    className="mt-1 block break-all text-sm text-[#10284C]/65 transition hover:text-[#EA4335]"
+                    className="mt-1 block break-all text-sm text-[#10284C]/65 transition hover:text-[#C90070]"
                   >
                     {BUSINESS_EMAIL}
                   </a>
@@ -157,8 +156,8 @@ function ContactContent() {
               </div>
 
               <div className="flex gap-4 border-b border-[#10284C]/10 py-5">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center bg-[#7C3AED]/10">
-                  <Clock3 size={20} className="text-[#7C3AED]" />
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center bg-[#C90070]/10">
+                  <Clock3 size={20} className="text-[#C90070]" />
                 </div>
 
                 <div>
@@ -172,7 +171,7 @@ function ContactContent() {
               </div>
             </div>
 
-            <div className="mt-7 flex items-start gap-3 bg-[#F8F7F3] p-5">
+            <div className="mt-7 flex items-start gap-3 bg-[#FDF2F8] p-5">
               <MessageCircle
                 size={20}
                 className="mt-0.5 shrink-0 text-[#25D366]"
@@ -189,7 +188,7 @@ function ContactContent() {
           </div>
 
           <div className="border border-[#10284C]/10 p-5 sm:p-8 lg:p-10">
-            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#B58A12]">
+            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#C90070]">
               Service Enquiry
             </p>
 

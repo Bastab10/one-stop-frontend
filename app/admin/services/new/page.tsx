@@ -1,11 +1,11 @@
-
 "use client";
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 const API_URL =
-  process.env.NEXT_PUBLIC_API_URL || "https://one-stop-backend-sooty.vercel.app.app/api";
+  process.env.NEXT_PUBLIC_API_URL ||
+  "https://one-stop-backend-sooty.vercel.app.app/api";
 
 export default function NewServicePage() {
   const router = useRouter();
@@ -98,7 +98,7 @@ export default function NewServicePage() {
   }
 
   return (
-    <main className="min-h-screen bg-[#F8F7F3] px-5 py-8 text-[#10284C] sm:px-8">
+    <main className="min-h-screen bg-[#FDF2F8] px-5 py-8 text-[#10284C] sm:px-8">
       <div className="mx-auto max-w-3xl">
         <header className="flex items-center justify-between border-b border-[#10284C]/10 pb-6">
           <div>
@@ -109,14 +109,14 @@ export default function NewServicePage() {
           <button
             type="button"
             onClick={() => router.push("/admin/services")}
-            className="border border-[#10284C]/20 px-4 py-2 text-sm hover:bg-white"
+            className="border border-[#C90070]/30 px-4 py-2 text-sm transition-colors hover:bg-[#FCE7F3]"
           >
             Back
           </button>
         </header>
 
         <section className="mt-8">
-          <p className="text-xs font-bold uppercase tracking-widest text-[#B58A12]">
+          <p className="text-xs font-bold uppercase tracking-widest text-[#C90070]">
             Service Management
           </p>
           <h1 className="mt-2 font-serif text-4xl">Add New Service</h1>
@@ -141,7 +141,7 @@ export default function NewServicePage() {
               placeholder="e.g. AC Repairing & Maintenance"
               maxLength={100}
               required
-              className="w-full border border-[#10284C]/20 px-4 py-3 outline-none focus:border-[#B58A12]"
+              className="w-full border border-[#10284C]/20 px-4 py-3 outline-none transition-colors focus:border-[#C90070] focus:ring-1 focus:ring-[#C90070]/20"
             />
           </div>
 
@@ -160,7 +160,7 @@ export default function NewServicePage() {
               rows={3}
               maxLength={300}
               required
-              className="w-full resize-y border border-[#10284C]/20 px-4 py-3 outline-none focus:border-[#B58A12]"
+              className="w-full resize-y border border-[#10284C]/20 px-4 py-3 outline-none transition-colors focus:border-[#C90070] focus:ring-1 focus:ring-[#C90070]/20"
             />
             <p className="mt-1 text-right text-xs text-[#10284C]/50">
               {description.length}/300 characters
@@ -181,7 +181,7 @@ export default function NewServicePage() {
               placeholder="Explain the service, what's included, who it's for and any other useful information..."
               rows={7}
               maxLength={5000}
-              className="w-full resize-y border border-[#10284C]/20 px-4 py-3 outline-none focus:border-[#B58A12]"
+              className="w-full resize-y border border-[#10284C]/20 px-4 py-3 outline-none transition-colors focus:border-[#C90070] focus:ring-1 focus:ring-[#C90070]/20"
             />
             <p className="mt-1 text-right text-xs text-[#10284C]/50">
               {details.length}/5000 characters
@@ -200,7 +200,7 @@ export default function NewServicePage() {
               onChange={(event) =>
                 handleImageChange(event.target.files?.[0] ?? null)
               }
-              className="block w-full border border-[#10284C]/20 p-3 text-sm file:mr-4 file:border-0 file:bg-[#10284C] file:px-4 file:py-2 file:text-white"
+              className="block w-full border border-[#10284C]/20 p-3 text-sm file:mr-4 file:cursor-pointer file:border-0 file:bg-[#C90070] file:px-4 file:py-2 file:font-medium file:text-white file:transition-colors hover:file:bg-[#A8005D]"
             />
             <p className="mt-2 text-xs text-[#10284C]/60">
               JPG, PNG or WebP. Maximum size: 5 MB.
@@ -212,7 +212,7 @@ export default function NewServicePage() {
                 <img
                   src={preview}
                   alt="Selected service preview"
-                  className="h-56 w-full rounded object-cover sm:w-80"
+                  className="h-56 w-full rounded border border-[#C90070]/15 object-cover sm:w-80"
                 />
               </div>
             )}
@@ -231,7 +231,7 @@ export default function NewServicePage() {
             <button
               type="submit"
               disabled={loading}
-              className="bg-[#10284C] px-6 py-3 text-sm font-semibold text-white hover:bg-[#1B3C68] disabled:cursor-not-allowed disabled:opacity-60"
+              className="bg-[#C90070] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#A8005D] disabled:cursor-not-allowed disabled:opacity-60"
             >
               {loading ? "Uploading & Saving..." : "Save Service"}
             </button>
@@ -240,7 +240,7 @@ export default function NewServicePage() {
               type="button"
               onClick={() => router.push("/admin/services")}
               disabled={loading}
-              className="border border-[#10284C]/20 px-6 py-3 text-sm hover:bg-[#F8F7F3] disabled:opacity-60"
+              className="border border-[#C90070]/30 px-6 py-3 text-sm transition-colors hover:bg-[#FCE7F3] disabled:opacity-60"
             >
               Cancel
             </button>

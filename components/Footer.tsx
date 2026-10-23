@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, Phone, Mail, MapPin, ChevronRight } from "lucide-react";
+import { Phone, Mail, MapPin, ChevronRight } from "lucide-react";
 import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa";
 
 const FOOTER_PHONE = "916026936104";
@@ -49,32 +49,32 @@ const footerServices = [
 ];
 
 const footerLinkClass =
-  "group flex items-start gap-2 text-sm leading-6 text-[#10284C]/65 transition-colors duration-200 hover:text-[#B58A12]";
+  "group flex items-start gap-2 text-sm leading-6 text-[#10284C]/65 transition-colors duration-200 hover:text-[#C90070]";
 
 export default function Footer() {
   return (
     <footer className="sohoj-footer relative overflow-hidden border-t border-[#10284C]/10 bg-[#FCFCFA] text-[#10284C]">
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -left-32 top-40 h-80 w-80 rounded-full border border-[#DCAF24]/15"
+        className="pointer-events-none absolute -left-32 top-40 h-80 w-80 rounded-full border border-[#C90070]/15"
       />
 
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -right-32 bottom-0 h-96 w-96 rounded-full border border-[#DCAF24]/15"
+        className="pointer-events-none absolute -right-32 bottom-0 h-96 w-96 rounded-full border border-[#C90070]/15"
       />
 
       <div className="relative mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12 xl:px-16">
         <div className="flex flex-col gap-6 border-b border-[#10284C]/10 py-9 sm:py-11 md:flex-row md:items-center md:justify-between">
           <div>
-            <p className="mb-3 flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.24em] text-[#9A7410] sm:text-xs">
-              <span className="h-px w-8 bg-[#DCAF24]" />
+            <p className="mb-3 flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.24em] text-[#C90070] sm:text-xs">
+              <span className="h-px w-8 bg-[#C90070]" />
               YOUR NEED, OUR SERVICE
             </p>
 
             <h2 className="font-serif text-3xl font-medium leading-tight tracking-[-0.04em] sm:text-4xl lg:text-5xl">
               Less searching.
-              <span className="block italic text-[#B58A12] sm:inline">
+              <span className="block italic text-[#C90070] sm:inline">
                 {" "}
                 More living.
               </span>
@@ -95,7 +95,7 @@ export default function Footer() {
               className="inline-flex items-center"
             >
               <Image
-                src="/images/shohoj-logoo.png"
+                src="/images/sohoj.png"
                 alt="SOHOJ - Your Need, Our Service"
                 width={190}
                 height={76}
@@ -141,7 +141,7 @@ export default function Footer() {
               Quick Links
             </h3>
 
-            <span className="mt-3 block h-[3px] w-9 rounded-full bg-[#DCAF24]" />
+            <span className="mt-3 block h-[3px] w-9 rounded-full bg-[#C90070]" />
 
             <ul className="mt-5 space-y-3.5">
               {quickLinks.map((item) => (
@@ -149,7 +149,7 @@ export default function Footer() {
                   <Link href={item.href} className={footerLinkClass}>
                     <ChevronRight
                       size={15}
-                      className="mt-1 shrink-0 text-[#B58A12] transition-transform group-hover:translate-x-1"
+                      className="mt-1 shrink-0 text-[#C90070] transition-transform group-hover:translate-x-1"
                     />
                     {item.label}
                   </Link>
@@ -163,7 +163,7 @@ export default function Footer() {
               Our Services
             </h3>
 
-            <span className="mt-3 block h-[3px] w-9 rounded-full bg-[#DCAF24]" />
+            <span className="mt-3 block h-[3px] w-9 rounded-full bg-[#C90070]" />
 
             <ul className="mt-5 space-y-3.5">
               {footerServices.map((item) => (
@@ -171,7 +171,7 @@ export default function Footer() {
                   <Link href={item.href} className={footerLinkClass}>
                     <ChevronRight
                       size={15}
-                      className="mt-1 shrink-0 text-[#B58A12] transition-transform group-hover:translate-x-1"
+                      className="mt-1 shrink-0 text-[#C90070] transition-transform group-hover:translate-x-1"
                     />
                     {item.label}
                   </Link>
@@ -185,14 +185,14 @@ export default function Footer() {
               Contact Us
             </h3>
 
-            <span className="mt-3 block h-[3px] w-9 rounded-full bg-[#DCAF24]" />
+            <span className="mt-3 block h-[3px] w-9 rounded-full bg-[#C90070]" />
 
             <div className="mt-6 space-y-5">
               <a
                 href={`tel:+${FOOTER_PHONE}`}
                 className="group flex items-start gap-3"
               >
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#16A34A]/10 text-[#16A34A] transition-colors group-hover:bg-[#16A34A]/20">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#C90070]/10 text-[#C90070] transition-colors group-hover:bg-[#C90070]/20">
                   <Phone size={18} />
                 </span>
 
@@ -200,7 +200,7 @@ export default function Footer() {
                   <span className="block text-xs font-medium text-[#10284C]/50">
                     Call us
                   </span>
-                  <span className="mt-1 block text-sm font-semibold transition-colors group-hover:text-[#16A34A]">
+                  <span className="mt-1 block text-sm font-semibold transition-colors group-hover:text-[#C90070]">
                     +91 60269 36104
                   </span>
                 </span>
@@ -230,7 +230,7 @@ export default function Footer() {
                 href={`mailto:${FOOTER_EMAIL}`}
                 className="group flex items-start gap-3"
               >
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#EA4335]/10 text-[#EA4335] transition-colors group-hover:bg-[#EA4335]/20">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#C90070]/10 text-[#C90070] transition-colors group-hover:bg-[#C90070]/20">
                   <Mail size={18} />
                 </span>
 
@@ -238,14 +238,14 @@ export default function Footer() {
                   <span className="block text-xs font-medium text-[#10284C]/50">
                     Email us
                   </span>
-                  <span className="mt-1 block break-all text-sm font-semibold transition-colors group-hover:text-[#EA4335]">
+                  <span className="mt-1 block break-all text-sm font-semibold transition-colors group-hover:text-[#C90070]">
                     {FOOTER_EMAIL}
                   </span>
                 </span>
               </a>
 
               <div className="flex items-start gap-3">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#EA4335]/10 text-[#EA4335]">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#C90070]/10 text-[#C90070]">
                   <MapPin size={19} />
                 </span>
 
@@ -275,29 +275,29 @@ export default function Footer() {
           <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-xs text-[#10284C]/60">
             <Link
               href="/privacy-policy"
-              className="transition-colors hover:text-[#B58A12]"
+              className="transition-colors hover:text-[#C90070]"
             >
               Privacy Policy
             </Link>
 
-            <span aria-hidden="true" className="text-[#DCAF24]">
+            <span aria-hidden="true" className="text-[#C90070]">
               •
             </span>
 
             <Link
               href="/terms"
-              className="transition-colors hover:text-[#B58A12]"
+              className="transition-colors hover:text-[#C90070]"
             >
               Terms of Service
             </Link>
 
-            <span aria-hidden="true" className="text-[#DCAF24]">
+            <span aria-hidden="true" className="text-[#C90070]">
               •
             </span>
 
             <Link
               href="/partner"
-              className="transition-colors hover:text-[#B58A12]"
+              className="transition-colors hover:text-[#C90070]"
             >
               Partner With Us
             </Link>
