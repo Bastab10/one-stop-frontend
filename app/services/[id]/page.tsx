@@ -1,16 +1,14 @@
-"use client";
 
-import { Suspense, useEffect, useState } from "react";
-import { useParams } from "next/navigation";
-import Link from "next/link";
-import { ArrowLeft, ArrowUpRight, Phone } from "lucide-react";
-import { FaWhatsapp } from "react-icons/fa";
-
-const BUSINESS_PHONE = "916026936104";
+import type { Metadata } from "next";
+import { cache, Suspense } from "react";
+import { notFound, permanentRedirect } from "next/navigation";
+import ServiceDetailsClient from "./ServiceDetailsClient";
 
 const API_URL =
   process.env.NEXT_PUBLIC_API_URL ||
-  "https://one-stop-backend-sooty.vercel.app.app/api";
+  "https://one-stop-backend-sooty.vercel.app/api";
+
+const SITE_URL = "https://www.sohojservices.in";
 
 type Service = {
   _id: string;
@@ -22,206 +20,131 @@ type Service = {
   active: boolean;
 };
 
-export default function ServiceDetailsPage() {
+async function getServices(): Promise<Service[]> {
+  try {
+    const response = await fetch(
+      `${API_URL.replace(/\/+$/, "")}/services`,
+      {
+        cache: "no-store",
+      },
+    );
+
+    if (!response.ok) {
+      console.error("Services API returned:", response.status);
+      return [];
+    }
+
+    const data = await response.json();
+
+    return Array.isArray(data.services) ? data.services : [];
+  } catch (error) {
+    console.error("Failed to fetch services:", error);
+    return [];
+  }
+}
+
+function slugify(value: string) {
+  return value
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
+const getService = cache(async (identifier: string) => {
+  const services = await getServices();
+  const activeServices = services.filter((service) => service.active);
+
   return (
-    <Suspense
-      fallback={
-        <main className="min-h-screen bg-white px-5 py-24 text-center text-[#10284C]">
-          Loading service details...
-        </main>
-      }
-    >
-      <ServiceDetailsContent />
-    </Suspense>
+    activeServices.find((service) => service._id === identifier) ??
+    activeServices.find(
+      (service) => slugify(service.title) === identifier,
+    )
+  );
+});
+
+type Props = {
+  params: Promise<{ id: string }>;
+};
+
+export async function generateMetadata({
+  params,
+}: Props): Promise<Metadata> {
+  const { id } = await params;
+  const service = await getService(id);
+
+  if (!service) {
+    return {
+      title: "Service Not Found | SOHOJ",
+      robots: {
+        index: false,
+        follow: false,
+      },
+    };
+  }
+
+  const slug = slugify(service.title);
+  const canonicalUrl = `${SITE_URL}/services/${slug}`;
+  const title = `${service.title} in Tezpur, Assam | SOHOJ`;
+
+  const description =
+    `${service.description} Contact SOHOJ for ${service.title} ` +
+    "in Tezpur, Assam. Enquire today.";
+
+  return {
+    title,
+    description: description.slice(0, 160),
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    openGraph: {
+      title,
+      description: description.slice(0, 160),
+      url: canonicalUrl,
+      siteName: "SOHOJ",
+      type: "website",
+      images: service.image ? [service.image] : [],
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
+
+function LoadingService() {
+  return (
+    <main className="min-h-screen bg-white px-5 py-24 text-center text-[#10284C]">
+      Loading service details...
+    </main>
   );
 }
 
-function ServiceDetailsContent() {
-  const params = useParams<{ id: string }>();
-  const id = params.id;
+async function ServiceDetailsContent({ id }: { id: string }) {
+  const service = await getService(id);
 
-  const [service, setService] = useState<Service | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
-
-  useEffect(() => {
-    if (!id) return;
-
-    const controller = new AbortController();
-
-    async function fetchService() {
-      try {
-        const response = await fetch(`${API_URL}/services`, {
-          signal: controller.signal,
-          cache: "no-store",
-        });
-
-        if (!response.ok) {
-          throw new Error("Unable to fetch services");
-        }
-
-        const data = await response.json();
-
-        const services: Service[] = Array.isArray(data.services)
-          ? data.services
-          : [];
-
-        const found = services.find(
-          (item) => item._id === id && item.active
-        );
-
-        setService(found ?? null);
-      } catch (err) {
-        if (err instanceof Error && err.name !== "AbortError") {
-          console.error("Failed to load service details:", err);
-          setError(true);
-        }
-      } finally {
-        if (!controller.signal.aborted) {
-          setLoading(false);
-        }
-      }
-    }
-
-    void fetchService();
-
-    return () => controller.abort();
-  }, [id]);
-
-  if (loading) {
-    return (
-      <main className="min-h-screen bg-white px-5 py-24 text-center text-[#10284C]">
-        Loading service details...
-      </main>
-    );
+  if (!service) {
+    notFound();
   }
 
-  if (error || !service) {
-    return (
-      <main className="flex min-h-screen flex-col items-center justify-center bg-white px-5 text-center text-[#10284C]">
-        <h1 className="font-serif text-4xl">
-          {error ? "Unable to load service" : "Service not found"}
-        </h1>
+  const slug = slugify(service.title);
 
-        <p className="mt-3 text-sm text-[#10284C]/65">
-          This service may be unavailable or inactive.
-        </p>
-
-        <Link
-          href="/#services"
-          className="mt-6 inline-flex items-center gap-2 text-sm font-semibold transition hover:text-[#C90070]"
-        >
-          <ArrowLeft size={17} />
-          Back to Services
-        </Link>
-      </main>
-    );
+  if (id !== slug) {
+    permanentRedirect(`/services/${slug}`);
   }
 
-  const whatsappMessage = [
-    "Hello SOHOJ!",
-    "",
-    `I am interested in ${service.title}.`,
-    `Service details: ${service.description}`,
-    "",
-    "Please share more details and pricing.",
-  ].join("\n");
+  return <ServiceDetailsClient service={service} />;
+}
 
-  const whatsappUrl =
-    `https://wa.me/${BUSINESS_PHONE}?text=${encodeURIComponent(
-      whatsappMessage
-    )}`;
+export default async function ServiceDetailsPage({
+  params,
+}: Props) {
+  const { id } = await params;
 
   return (
-    <main className="min-h-screen bg-white text-[#10284C]">
-      <div className="mx-auto max-w-[1400px] px-5 py-10 sm:px-8 sm:py-16 lg:px-14">
-        <Link
-          href="/#services"
-          className="mb-10 inline-flex items-center gap-2 text-sm font-semibold text-[#10284C]/70 transition hover:text-[#C90070]"
-        >
-          <ArrowLeft size={17} />
-          Back to Services
-        </Link>
-
-        <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-16">
-          <div className="relative overflow-hidden bg-[#FDF2F8] lg:sticky lg:top-8">
-            <img
-              src={service.image}
-              alt={service.title}
-              className="aspect-[4/3] w-full object-cover"
-            />
-
-            <span className="absolute left-5 top-5 bg-white px-4 py-3 text-xs font-bold tracking-widest text-[#C90070]">
-              SERVICE {String(service.number).padStart(2, "0")}
-            </span>
-          </div>
-
-          <div>
-            <p className="mb-6 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.22em]">
-              <span className="h-px w-9 bg-[#C90070]" />
-              Discover what we do
-            </p>
-
-            <h1 className="font-serif text-5xl font-normal leading-[1.05] tracking-[-0.04em] sm:text-6xl lg:text-7xl">
-              {service.title}
-            </h1>
-
-            <p className="mt-7 text-base leading-8 text-[#10284C]/70">
-              {service.description}
-            </p>
-
-            {service.details?.trim() && (
-              <section className="mt-8 border-t border-[#10284C]/10 pt-7">
-                <h2 className="font-serif text-3xl">
-                  About this service
-                </h2>
-
-                <div className="mt-4 whitespace-pre-line text-sm leading-8 text-[#10284C]/75">
-                  {service.details}
-                </div>
-              </section>
-            )}
-
-            <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-              <a
-                href={`tel:+${BUSINESS_PHONE}`}
-                className="inline-flex items-center justify-center gap-3 bg-[#C90070] px-7 py-4 text-sm font-semibold text-white transition duration-300 hover:bg-[#A8005D]"
-              >
-                <Phone size={18} />
-                Call for Service
-              </a>
-
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`Enquire about ${service.title} on WhatsApp`}
-                className="group inline-flex items-center justify-center gap-3 rounded-lg border border-[#00A859] bg-[#00A859] px-7 py-4 text-sm font-semibold text-white shadow-lg shadow-green-600/15 transition-all duration-300 hover:-translate-y-0.5 hover:border-[#008F4C] hover:bg-[#008F4C] hover:shadow-xl"
-              >
-                <FaWhatsapp
-                  size={23}
-                  aria-hidden="true"
-                  className="shrink-0"
-                />
-
-                <span>Enquire on WhatsApp</span>
-
-                <ArrowUpRight
-                  size={18}
-                  aria-hidden="true"
-                  className="shrink-0 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
-                />
-              </a>
-            </div>
-
-            <p className="mt-6 text-xs leading-6 text-[#10284C]/55">
-              Contact{" "}
-              <strong className="font-bold">SOHOJ</strong> to discuss your
-              requirements and arrange your service in Tezpur, Assam.
-            </p>
-          </div>
-        </div>
-      </div>
-    </main>
+    <Suspense fallback={<LoadingService />}>
+      <ServiceDetailsContent id={id} />
+    </Suspense>
   );
 }

@@ -14,7 +14,7 @@ import {
 import { FaWhatsapp } from "react-icons/fa";
 
 const BUSINESS_PHONE = "916026936104";
-const BUSINESS_EMAIL = "sohojservices@gmail.com";
+const BUSINESS_EMAIL = "sohojservices1@gmail.com";
 
 const services = [
   "Painting Services",

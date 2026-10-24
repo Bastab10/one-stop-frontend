@@ -1,3 +1,4 @@
+
 import type { MetadataRoute } from "next";
 
 const BASE_URL = "https://www.sohojservices.in";
@@ -8,9 +9,18 @@ const API_URL =
 
 type Service = {
   _id: string;
+  title: string;
   active: boolean;
 };
 
+function slugify(value: string) {
+  return value
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const pages: MetadataRoute.Sitemap = [
@@ -22,9 +32,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ];
 
   try {
-    const response = await fetch(`${API_URL.replace(/\/+$/, "")}/services`, {
-      next: { revalidate: 3600 },
-    });
+    const response = await fetch(
+      `${API_URL.replace(/\/+$/, "")}/services`,
+      {
+        next: { revalidate: 3600 },
+      },
+    );
 
     if (!response.ok) {
       throw new Error(`Services API returned ${response.status}`);
@@ -37,10 +50,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       : [];
 
     const servicePages: MetadataRoute.Sitemap = services
-      .filter((service) => service.active && service._id)
+      .filter(
+        (service) =>
+          service.active &&
+          service._id &&
+          service.title?.trim(),
+      )
       .map((service) => ({
-        url: `${BASE_URL}/services/${encodeURIComponent(service._id)}`,
-        changeFrequency: "weekly",
+        url: `${BASE_URL}/services/${slugify(service.title)}`,
+        changeFrequency: "weekly" as const,
         priority: 0.8,
       }));
 

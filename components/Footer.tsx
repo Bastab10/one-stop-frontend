@@ -4,7 +4,7 @@ import { Phone, Mail, MapPin, ChevronRight } from "lucide-react";
 import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa";
 
 const FOOTER_PHONE = "916026936104";
-const FOOTER_EMAIL = "sohojservices@gmail.com";
+const FOOTER_EMAIL = "sohojservices1@gmail.com";
 
 const socialLinks = [
   {
