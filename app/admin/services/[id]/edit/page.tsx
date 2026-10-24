@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Suspense, useEffect, useState } from "react";
@@ -5,7 +6,7 @@ import { useParams, useRouter } from "next/navigation";
 
 const API_URL =
   process.env.NEXT_PUBLIC_API_URL ||
-  "https://one-stop-backend-sooty.vercel.app.app/api";
+  "https://one-stop-backend-sooty.vercel.app/api";
 
 type Service = {
   _id: string;
@@ -52,6 +53,18 @@ function EditServiceContent() {
 
     async function loadService() {
       try {
+        // Verify the admin session before loading the page data.
+        const authResponse = await fetch(`${API_URL}/auth/me`, {
+          method: "GET",
+          credentials: "include",
+          cache: "no-store",
+        });
+
+        if (!authResponse.ok) {
+          router.replace("/admin/login");
+          return;
+        }
+
         const response = await fetch(`${API_URL}/services`, {
           credentials: "include",
           cache: "no-store",
@@ -68,7 +81,9 @@ function EditServiceContent() {
         );
 
         if (!found) {
-          throw new Error("Service not found.");
+          throw new Error(
+            "Service not found. It may be inactive or unavailable."
+          );
         }
 
         if (!cancelled) {
@@ -82,7 +97,9 @@ function EditServiceContent() {
       } catch (err) {
         if (!cancelled) {
           setError(
-            err instanceof Error ? err.message : "Unable to load service."
+            err instanceof Error
+              ? err.message
+              : "Unable to load service."
           );
         }
       } finally {
@@ -99,15 +116,27 @@ function EditServiceContent() {
     return () => {
       cancelled = true;
     };
-  }, [id]);
+  }, [id, router]);
 
-  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(
+    event: React.FormEvent<HTMLFormElement>
+  ) {
     event.preventDefault();
     setSaving(true);
     setError("");
 
+    if (!title.trim() || !description.trim()) {
+      setError("Service name and description are required.");
+      setSaving(false);
+      return;
+    }
+
     if (imageFile) {
-      if (!["image/jpeg", "image/png", "image/webp"].includes(imageFile.type)) {
+      if (
+        !["image/jpeg", "image/png", "image/webp"].includes(
+          imageFile.type
+        )
+      ) {
         setError("Only JPG, PNG or WebP images are allowed.");
         setSaving(false);
         return;
@@ -121,6 +150,17 @@ function EditServiceContent() {
     }
 
     try {
+      // Verify the session again before saving.
+      const authResponse = await fetch(`${API_URL}/auth/me`, {
+        credentials: "include",
+        cache: "no-store",
+      });
+
+      if (!authResponse.ok) {
+        router.replace("/admin/login");
+        return;
+      }
+
       let finalImage = imageUrl;
 
       if (imageFile) {
@@ -136,7 +176,14 @@ function EditServiceContent() {
         const uploadData = await uploadResponse.json();
 
         if (!uploadResponse.ok || !uploadData.image) {
-          throw new Error(uploadData.message || "Image upload failed.");
+          if (uploadResponse.status === 401) {
+            router.replace("/admin/login");
+            return;
+          }
+
+          throw new Error(
+            uploadData.message || "Image upload failed."
+          );
         }
 
         finalImage = uploadData.image;
@@ -160,14 +207,23 @@ function EditServiceContent() {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.message || "Unable to update service.");
+        if (response.status === 401) {
+          router.replace("/admin/login");
+          return;
+        }
+
+        throw new Error(
+          data.message || "Unable to update service."
+        );
       }
 
       router.push("/admin/services");
       router.refresh();
     } catch (err) {
       setError(
-        err instanceof Error ? err.message : "Unable to update service."
+        err instanceof Error
+          ? err.message
+          : "Unable to update service."
       );
     } finally {
       setSaving(false);
@@ -177,7 +233,7 @@ function EditServiceContent() {
   if (loading) {
     return (
       <main className="min-h-screen bg-[#FDF2F8] p-8 text-[#10284C]">
-        Loading service...
+        Verifying admin access and loading service...
       </main>
     );
   }
@@ -208,7 +264,9 @@ function EditServiceContent() {
             <p className="font-serif text-2xl">
               SOHOJ<span className="text-[#C90070]">.</span>
             </p>
-            <p className="text-sm text-[#10284C]/60">Edit Service</p>
+            <p className="text-sm text-[#10284C]/60">
+              Edit Service
+            </p>
           </div>
 
           <button
@@ -220,7 +278,9 @@ function EditServiceContent() {
           </button>
         </header>
 
-        <h1 className="mt-8 font-serif text-4xl">Edit Service</h1>
+        <h1 className="mt-8 font-serif text-4xl">
+          Edit Service
+        </h1>
 
         <p className="mt-2 text-sm text-[#10284C]/60">
           Service No. {service.number}
@@ -231,7 +291,10 @@ function EditServiceContent() {
           className="mt-8 space-y-6 border border-[#C90070]/10 bg-white p-6 sm:p-8"
         >
           <div>
-            <label htmlFor="title" className="mb-2 block text-sm font-semibold">
+            <label
+              htmlFor="title"
+              className="mb-2 block text-sm font-semibold"
+            >
               Service Name
             </label>
 
@@ -256,7 +319,9 @@ function EditServiceContent() {
             <textarea
               id="description"
               value={description}
-              onChange={(event) => setDescription(event.target.value)}
+              onChange={(event) =>
+                setDescription(event.target.value)
+              }
               rows={3}
               maxLength={300}
               required
@@ -292,7 +357,9 @@ function EditServiceContent() {
           </div>
 
           <div>
-            <p className="mb-2 text-sm font-semibold">Current Image</p>
+            <p className="mb-2 text-sm font-semibold">
+              Current Image
+            </p>
 
             <img
               src={imageUrl}
@@ -300,7 +367,10 @@ function EditServiceContent() {
               className="mb-4 h-48 w-full rounded object-cover sm:w-80"
             />
 
-            <label htmlFor="image" className="mb-2 block text-sm font-semibold">
+            <label
+              htmlFor="image"
+              className="mb-2 block text-sm font-semibold"
+            >
               Replace Image (Optional)
             </label>
 
@@ -310,6 +380,18 @@ function EditServiceContent() {
               accept="image/jpeg,image/png,image/webp"
               onChange={(event) => {
                 const file = event.target.files?.[0] ?? null;
+
+                if (
+                  file &&
+                  !["image/jpeg", "image/png", "image/webp"].includes(
+                    file.type
+                  )
+                ) {
+                  setError("Only JPG, PNG or WebP images are allowed.");
+                  event.target.value = "";
+                  setImageFile(null);
+                  return;
+                }
 
                 if (file && file.size > 5 * 1024 * 1024) {
                   setError("Image size must be 5 MB or less.");
@@ -340,7 +422,10 @@ function EditServiceContent() {
           </label>
 
           {error && (
-            <p role="alert" className="bg-red-50 p-3 text-sm text-red-700">
+            <p
+              role="alert"
+              className="bg-red-50 p-3 text-sm text-red-700"
+            >
               {error}
             </p>
           )}

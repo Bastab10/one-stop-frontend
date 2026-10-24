@@ -1,9 +1,10 @@
+
 "use client";
 
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, Menu, X, Phone, Mail } from "lucide-react";
+import { Menu, X, Phone, Mail, LogIn } from "lucide-react";
 
 const navLinks = [
   { label: "Home", href: "/#home" },
@@ -20,58 +21,59 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-[#10294C]/10 bg-white/95 backdrop-blur-md">
-      <nav className="mx-auto flex h-[68px] max-w-[1600px] items-center justify-between gap-3 px-4 sm:h-[74px] sm:px-6 lg:h-[80px] lg:gap-5 lg:px-10">
+      <nav className="mx-auto flex h-[68px] max-w-[1600px] items-center justify-between gap-3 px-4 sm:h-[72px] sm:px-6 lg:h-[76px] lg:gap-5 lg:px-10">
         <Link
           href="/#home"
           aria-label="SOHOJ Home"
           onClick={() => setMenuOpen(false)}
-          className="relative block h-[54px] w-[165px] shrink-0 sm:h-[60px] sm:w-[200px] lg:h-[66px] lg:w-[230px]"
+          className="relative block h-[50px] w-[150px] shrink-0 sm:h-[56px] sm:w-[180px] lg:h-[60px] lg:w-[195px]"
         >
           <Image
             src="/images/sohoj.png"
             alt="SOHOJ — One Stop Service Solutions"
             fill
             priority
-            sizes="(max-width: 640px) 165px, (max-width: 1024px) 200px, 230px"
+            sizes="(max-width: 640px) 150px, (max-width: 1024px) 180px, 195px"
             className="object-contain object-left"
           />
         </Link>
 
-        <div className="hidden items-center gap-5 lg:flex xl:gap-7">
+        <div className="hidden items-center gap-5 lg:flex xl:gap-8">
           {navLinks.map((link) => (
             <Link
               key={link.label}
               href={link.href}
-              className="text-[11px] font-bold uppercase tracking-[0.07em] text-[#10294C] transition-colors hover:text-[#C90070] xl:text-xs"
+              className="group relative py-2 text-[11px] font-bold uppercase tracking-[0.1em] text-[#10294C]/80 transition-colors hover:text-[#C90070] xl:text-xs"
             >
               {link.label}
+              <span className="absolute inset-x-0 -bottom-0.5 h-[2px] origin-left scale-x-0 rounded-full bg-[#C90070] transition-transform duration-200 group-hover:scale-x-100" />
             </Link>
           ))}
         </div>
 
-        <div className="hidden shrink-0 items-center gap-2 lg:flex xl:gap-3">
+        <div className="hidden shrink-0 items-center gap-2 lg:flex xl:gap-2.5">
           <a
             href={`tel:+${BUSINESS_PHONE}`}
-            className="inline-flex items-center justify-center gap-2 rounded-lg border border-[#10294C]/15 bg-white px-3 py-2.5 text-xs font-bold text-[#10294C] transition hover:border-[#C90070] hover:bg-[#FDF2F8] xl:px-4 xl:text-sm"
+            className="inline-flex h-[42px] items-center justify-center gap-2 border border-[#10294C]/15 bg-white px-3.5 text-sm font-medium text-[#10294C] transition hover:border-[#C90070] hover:bg-[#FDF2F8] hover:text-[#C90070]"
           >
-            <Phone size={15} />
+            <Phone size={16} />
             Call Now
           </a>
 
           <a
             href={`mailto:${CONTACT_EMAIL}`}
-            className="inline-flex items-center justify-center gap-2 rounded-lg border border-[#10294C]/15 bg-white px-3 py-2.5 text-xs font-bold text-[#10294C] transition hover:border-[#C90070] hover:bg-[#FDF2F8] xl:px-4 xl:text-sm"
+            className="inline-flex h-[42px] items-center justify-center gap-2 border border-[#10294C]/15 bg-white px-3.5 text-sm font-medium text-[#10294C] transition hover:border-[#C90070] hover:bg-[#FDF2F8] hover:text-[#C90070]"
           >
-            <Mail size={15} />
+            <Mail size={16} />
             Email Us
           </a>
 
           <Link
-            href="/#contact"
-            className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#C90070] px-3 py-2.5 text-xs font-bold text-white transition hover:bg-[#A8005D] xl:px-4 xl:text-sm"
+            href="/admin/login"
+            className="inline-flex h-[42px] items-center justify-center gap-2 border border-[#C90070] bg-[#C90070] px-5 text-sm font-medium text-white transition hover:border-[#A8005D] hover:bg-[#A8005D]"
           >
-            Book a Service
-            <ArrowUpRight size={15} />
+            <LogIn size={16} />
+            Login
           </Link>
         </div>
 
@@ -80,34 +82,36 @@ export default function Navbar() {
           onClick={() => setMenuOpen((prev) => !prev)}
           aria-label={menuOpen ? "Close navigation" : "Open navigation"}
           aria-expanded={menuOpen}
-          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[#10294C]/15 text-[#10294C] transition hover:border-[#C90070] hover:bg-[#FDF2F8] lg:hidden"
+          className="flex h-9 w-9 shrink-0 items-center justify-center border border-[#10294C]/15 bg-white text-[#10294C] transition hover:border-[#C90070] hover:bg-[#FDF2F8] hover:text-[#C90070] lg:hidden"
         >
-          {menuOpen ? <X size={21} /> : <Menu size={21} />}
+          {menuOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
       </nav>
 
       {menuOpen && (
-        <div className="border-t border-[#10294C]/10 bg-white px-5 py-4 sm:px-6 lg:hidden">
-          <div className="flex flex-col">
-            {navLinks.map((link, index) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                onClick={() => setMenuOpen(false)}
-                className="flex items-center justify-between border-b border-[#10294C]/10 py-3.5 text-sm font-bold text-[#10294C] transition-colors last:border-0 hover:text-[#C90070]"
-              >
-                <span>{link.label}</span>
-                <span className="text-xs tracking-widest text-[#10294C]/40">
-                  0{index + 1}
-                </span>
-              </Link>
-            ))}
+        <div className="border-t border-[#10294C]/10 bg-white lg:hidden">
+          <div className="mx-auto max-w-[1600px] px-5 py-4 sm:px-6">
+            <div className="flex flex-col">
+              {navLinks.map((link, index) => (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  onClick={() => setMenuOpen(false)}
+                  className="flex items-center justify-between border-b border-[#10294C]/10 py-3.5 text-sm font-semibold text-[#10294C] transition-colors last:border-0 hover:text-[#C90070]"
+                >
+                  <span>{link.label}</span>
+                  <span className="text-xs tracking-widest text-[#10294C]/40">
+                    0{index + 1}
+                  </span>
+                </Link>
+              ))}
+            </div>
 
             <div className="mt-4 grid grid-cols-2 gap-2">
               <a
                 href={`tel:+${BUSINESS_PHONE}`}
                 onClick={() => setMenuOpen(false)}
-                className="flex items-center justify-center gap-2 rounded-lg border border-[#10294C]/15 bg-white px-3 py-3 text-xs font-bold text-[#10294C] transition hover:bg-[#FDF2F8]"
+                className="flex h-[42px] items-center justify-center gap-2 border border-[#10294C]/15 px-2 text-[13px] font-medium text-[#10294C] transition hover:border-[#C90070] hover:bg-[#FDF2F8]"
               >
                 <Phone size={15} />
                 Call Now
@@ -116,21 +120,25 @@ export default function Navbar() {
               <a
                 href={`mailto:${CONTACT_EMAIL}`}
                 onClick={() => setMenuOpen(false)}
-                className="flex items-center justify-center gap-2 rounded-lg border border-[#10294C]/15 bg-white px-3 py-3 text-xs font-bold text-[#10294C] transition hover:bg-[#FDF2F8]"
+                className="flex h-[42px] items-center justify-center gap-2 border border-[#10294C]/15 px-2 text-[13px] font-medium text-[#10294C] transition hover:border-[#C90070] hover:bg-[#FDF2F8]"
               >
                 <Mail size={15} />
                 Email Us
               </a>
 
               <Link
-                href="/#contact"
+                href="/admin/login"
                 onClick={() => setMenuOpen(false)}
-                className="col-span-2 flex items-center justify-center gap-2 rounded-lg bg-[#C90070] px-3 py-3 text-xs font-bold text-white transition hover:bg-[#A8005D]"
+                className="col-span-2 flex h-[42px] items-center justify-center gap-2 border border-[#C90070] bg-[#C90070] px-4 text-sm font-medium text-white transition hover:border-[#A8005D] hover:bg-[#A8005D]"
               >
-                Book a Service
-                <ArrowUpRight size={15} />
+                <LogIn size={16} />
+                Admin Login
               </Link>
             </div>
+
+            <p className="mt-4 text-center text-[10px] tracking-wide text-[#10294C]/45">
+              SOHOJ · One Stop Service Solutions
+            </p>
           </div>
         </div>
       )}
