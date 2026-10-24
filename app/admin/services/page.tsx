@@ -153,7 +153,7 @@ export default function AdminServicesPage() {
         throw new Error("Logout failed. Please try again.");
       }
 
-      router.replace("/admin/login");
+      router.replace("/");
       router.refresh();
     } catch (err) {
       setError(err instanceof Error ? err.message : "Unable to log out.");

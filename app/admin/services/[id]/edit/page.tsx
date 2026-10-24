@@ -150,7 +150,6 @@ function EditServiceContent() {
     }
 
     try {
-      // Verify the session again before saving.
       const authResponse = await fetch(`${API_URL}/auth/me`, {
         credentials: "include",
         cache: "no-store",
