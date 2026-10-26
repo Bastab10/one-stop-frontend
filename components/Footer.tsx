@@ -54,17 +54,8 @@ const footerLinkClass =
 export default function Footer() {
   return (
     <footer className="sohoj-footer relative overflow-hidden border-t border-[#10284C]/10 bg-[#FCFCFA] text-[#10284C]">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -left-32 top-40 h-80 w-80 rounded-full border border-[#C90070]/15"
-      />
-
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -right-32 bottom-0 h-96 w-96 rounded-full border border-[#C90070]/15"
-      />
-
       <div className="relative mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12 xl:px-16">
+        {/* Footer heading */}
         <div className="flex flex-col gap-6 border-b border-[#10284C]/10 py-9 sm:py-11 md:flex-row md:items-center md:justify-between">
           <div>
             <p className="mb-3 flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.24em] text-[#C90070] sm:text-xs">
@@ -81,8 +72,8 @@ export default function Footer() {
             </h2>
 
             <p className="mt-3 max-w-xl text-sm leading-6 text-[#10284C]/60 sm:text-base">
-              Everyday services, trusted professionals, and simpler living — all
-              in one place.
+              Everyday services, trusted professionals, and simpler living —
+              all in one place.
             </p>
           </div>
         </div>
@@ -106,7 +97,9 @@ export default function Footer() {
             <p className="mt-5 max-w-sm text-sm leading-7 text-[#10284C]/65">
               From home repairs and maintenance to catering and special
               occasions,{" "}
-              <strong className="font-semibold text-[#10284C]">SOHOJ</strong>{" "}
+              <strong className="font-semibold text-[#10284C]">
+                SOHOJ
+              </strong>{" "}
               brings your everyday service needs together in one trusted place.
             </p>
 
@@ -149,6 +142,7 @@ export default function Footer() {
                   <Link href={item.href} className={footerLinkClass}>
                     <ChevronRight
                       size={15}
+                      aria-hidden="true"
                       className="mt-1 shrink-0 text-[#C90070] transition-transform group-hover:translate-x-1"
                     />
                     {item.label}
@@ -171,6 +165,7 @@ export default function Footer() {
                   <Link href={item.href} className={footerLinkClass}>
                     <ChevronRight
                       size={15}
+                      aria-hidden="true"
                       className="mt-1 shrink-0 text-[#C90070] transition-transform group-hover:translate-x-1"
                     />
                     {item.label}
@@ -193,7 +188,7 @@ export default function Footer() {
                 className="group flex items-start gap-3"
               >
                 <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#C90070]/10 text-[#C90070] transition-colors group-hover:bg-[#C90070]/20">
-                  <Phone size={18} />
+                  <Phone size={18} aria-hidden="true" />
                 </span>
 
                 <span className="min-w-0 pt-0.5">
@@ -213,7 +208,7 @@ export default function Footer() {
                 className="group flex items-start gap-3"
               >
                 <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#25D366]/10 text-[#25D366] transition-colors group-hover:bg-[#25D366]/20">
-                  <FaWhatsapp size={19} />
+                  <FaWhatsapp size={19} aria-hidden="true" />
                 </span>
 
                 <span className="min-w-0 pt-0.5">
@@ -231,7 +226,7 @@ export default function Footer() {
                 className="group flex items-start gap-3"
               >
                 <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#C90070]/10 text-[#C90070] transition-colors group-hover:bg-[#C90070]/20">
-                  <Mail size={18} />
+                  <Mail size={18} aria-hidden="true" />
                 </span>
 
                 <span className="min-w-0 pt-0.5">
@@ -246,7 +241,7 @@ export default function Footer() {
 
               <div className="flex items-start gap-3">
                 <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#C90070]/10 text-[#C90070]">
-                  <MapPin size={19} />
+                  <MapPin size={19} aria-hidden="true" />
                 </span>
 
                 <span className="pt-0.5">
@@ -269,7 +264,7 @@ export default function Footer() {
       <div className="relative border-t border-[#10284C]/10 bg-white/80">
         <div className="mx-auto flex max-w-[1440px] flex-col gap-4 px-5 py-5 sm:px-8 md:flex-row md:items-center md:justify-between lg:px-12 xl:px-16">
           <p className="text-xs leading-5 text-[#10284C]/55">
-            © 2026 SOHOJ. All rights reserved.
+            © {new Date().getFullYear()} SOHOJ. All rights reserved.
           </p>
 
           <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-xs text-[#10284C]/60">

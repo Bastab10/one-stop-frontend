@@ -27,10 +27,6 @@ export default function Hero() {
       id="home"
       className="relative overflow-hidden bg-white text-[#10294C]"
     >
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -left-32 top-24 h-[360px] w-[360px] rounded-full border border-[#C90070]/20"
-      />
 
       <div className="mx-auto grid min-h-[calc(100svh-80px)] max-w-[1600px] items-center gap-8 px-5 py-7 sm:px-8 sm:py-10 lg:grid-cols-2 lg:gap-8 lg:px-10 lg:py-8 xl:px-12">
         <div className="relative z-10">
