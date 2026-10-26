@@ -198,6 +198,23 @@ const SEO_BY_SLUG: Record<string, SEOConfig> = {
       "rental car Tezpur",
     ],
   },
+    "House Lifting Service": {
+  title: "House Lifting Service in Tezpur & Assam | SOHOJ",
+  description:
+    "Looking for house lifting services in Tezpur or anywhere in Assam? SOHOJ provides house lifting and building raising solutions across Tezpur and all Assam.",
+  keywords: [
+    "house lifting service in Tezpur",
+    "house lifting service in Assam",
+    "house lifting services across Assam",
+    "house raising service in Tezpur",
+    "house raising service in Assam",
+    "building lifting service in Tezpur",
+    "building lifting service in Assam",
+    "old house lifting in Assam",
+    "house lifting contractor in Tezpur",
+    "house lifting contractor in Assam",
+  ],
+},
 };
 
 async function getServices(): Promise<Service[]> {
