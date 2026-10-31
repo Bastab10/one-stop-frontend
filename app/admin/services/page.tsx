@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
@@ -49,7 +50,9 @@ export default function AdminServicesPage() {
 
       setServices(data.services ?? []);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Unable to load services.");
+      setError(
+        err instanceof Error ? err.message : "Unable to load services."
+      );
     } finally {
       setLoading(false);
     }
@@ -121,7 +124,7 @@ export default function AdminServicesPage() {
         if (err instanceof Error && err.name === "AbortError") return;
 
         setError(
-          err instanceof Error ? err.message : "Unable to load services.",
+          err instanceof Error ? err.message : "Unable to load services."
         );
       } finally {
         if (!controller.signal.aborted) {
@@ -188,7 +191,7 @@ export default function AdminServicesPage() {
       await loadServices();
     } catch (err) {
       setError(
-        err instanceof Error ? err.message : "Unable to delete service.",
+        err instanceof Error ? err.message : "Unable to delete service."
       );
     }
   }
@@ -304,14 +307,14 @@ export default function AdminServicesPage() {
             </div>
           ) : (
             <div className="divide-y divide-[#10284C]/10">
-              {services.map((service) => (
+              {services.map((service, index) => (
                 <article
                   key={service._id}
                   className="flex flex-col justify-between gap-4 p-5 sm:flex-row sm:items-center"
                 >
                   <div className="flex min-w-0 items-center gap-4">
                     <span className="flex h-12 w-12 shrink-0 items-center justify-center bg-[#F5CA35]/20 font-semibold">
-                      {String(service.number).padStart(2, "0")}
+                      {String(index + 1).padStart(2, "0")}
                     </span>
 
                     <div className="min-w-0">
