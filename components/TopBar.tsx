@@ -32,10 +32,10 @@ export default function TopBar() {
 
           <p className="text-[11px] font-medium leading-relaxed tracking-[0.015em] text-white sm:text-xs lg:text-[13px]">
             <span className="font-semibold text-[#F472B6]">
-              অখ্যাত লোকক
+              Small things make perfection{" "}
             </span>{" "}
             <span className="font-semibold text-white">
-              বিখ্যাত কৰাৰ এটি প্ৰয়াস...
+              but perfection is not a small thing{" "}
             </span>{" "}
           </p>
         </div>
