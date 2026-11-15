@@ -67,7 +67,7 @@ export default function Founder() {
 
             <div className="relative aspect-[4/4.7] overflow-hidden bg-[#F5F2F4]">
               <img
-                src="/images/founder.jpeg"
+                src="/images/founder.png"
                 alt="Swagata Saikia Borah - Founder of SOHOJ"
                 className="h-full w-full object-cover"
               />
