@@ -10,7 +10,7 @@ const navLinks = [
   { label: "Home", href: "/#home" },
   { label: "Services", href: "/#services" },
   { label: "About", href: "/#about" },
-  { label: "Founder", href: "/#founder" },
+  { label: "Founder", href: "/founder" },
   { label: "Contact", href: "/#contact" },
 ];
 
@@ -23,6 +23,8 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-[#10294C]/10 bg-white/95 backdrop-blur-md">
       <nav className="mx-auto flex h-[68px] max-w-[1600px] items-center justify-between gap-3 px-4 sm:h-[72px] sm:px-6 lg:h-[76px] lg:gap-5 lg:px-10">
+
+        {/* LOGO */}
         <Link
           href="/#home"
           aria-label="SOHOJ Home"
@@ -39,6 +41,7 @@ export default function Navbar() {
           />
         </Link>
 
+        {/* DESKTOP NAVIGATION */}
         <div className="hidden items-center gap-5 lg:flex xl:gap-8">
           {navLinks.map((link) => (
             <Link
@@ -47,11 +50,13 @@ export default function Navbar() {
               className="group relative py-2 text-[11px] font-bold uppercase tracking-[0.1em] text-[#10294C]/80 transition-colors hover:text-[#C90070] xl:text-xs"
             >
               {link.label}
+
               <span className="absolute inset-x-0 -bottom-0.5 h-[2px] origin-left scale-x-0 rounded-full bg-[#C90070] transition-transform duration-200 group-hover:scale-x-100" />
             </Link>
           ))}
         </div>
 
+        {/* DESKTOP CONTACT BUTTONS */}
         <div className="hidden shrink-0 items-center gap-2 lg:flex xl:gap-2.5">
           <a
             href={`tel:+${BUSINESS_PHONE}`}
@@ -78,6 +83,7 @@ export default function Navbar() {
           </Link>
         </div>
 
+        {/* MOBILE MENU BUTTON */}
         <button
           type="button"
           onClick={() => setMenuOpen((prev) => !prev)}
@@ -89,9 +95,11 @@ export default function Navbar() {
         </button>
       </nav>
 
+      {/* MOBILE NAVIGATION */}
       {menuOpen && (
         <div className="border-t border-[#10294C]/10 bg-white lg:hidden">
           <div className="mx-auto max-w-[1600px] px-5 py-4 sm:px-6">
+
             <div className="flex flex-col">
               {navLinks.map((link, index) => (
                 <Link
@@ -101,6 +109,7 @@ export default function Navbar() {
                   className="flex items-center justify-between border-b border-[#10294C]/10 py-3.5 text-sm font-semibold text-[#10294C] transition-colors last:border-0 hover:text-[#C90070]"
                 >
                   <span>{link.label}</span>
+
                   <span className="text-xs tracking-widest text-[#10294C]/40">
                     0{index + 1}
                   </span>
@@ -108,6 +117,7 @@ export default function Navbar() {
               ))}
             </div>
 
+            {/* MOBILE CONTACT BUTTONS */}
             <div className="mt-4 grid grid-cols-2 gap-2">
               <a
                 href={`tel:+${BUSINESS_PHONE}`}
