@@ -4,11 +4,18 @@
 import Image from "next/image";
 import { Quote, GraduationCap } from "lucide-react";
 
-const responsibilities = [
+const hrResponsibilities = [
   "Human resource planning and development.",
   "Associate and service-partner coordination.",
   "Training and development.",
   "Organisational structure and team development.",
+];
+
+const itResponsibilities = [
+  "SOHOJ website design and development.",
+  "Website maintenance and updates.",
+  "Digital platform development.",
+  "Technical support for SOHOJ's online presence.",
 ];
 
 export default function Founder() {
@@ -35,7 +42,6 @@ export default function Founder() {
               sizes="(max-width: 640px) 255px, 255px"
               className="h-auto w-full bg-white p-1.5 shadow-md"
             />
-            
           </figure>
 
           <section>
@@ -132,7 +138,7 @@ export default function Founder() {
             </h4>
 
             <ol className="space-y-2">
-              {responsibilities.map((item, index) => (
+              {hrResponsibilities.map((item, index) => (
                 <li
                   key={index}
                   className="flex gap-3 text-xs leading-5 text-[#61718A]"
@@ -147,6 +153,70 @@ export default function Founder() {
 
             <p className="mt-6 border-t border-[#10284C]/10 pt-4 text-[9px] font-semibold uppercase tracking-[0.14em] text-[#10284C]/50">
               Human Resources & Organisational Development · SOHOJ
+            </p>
+          </section>
+        </article>
+      </section>
+
+      <hr className="border-[#10284C]/10" />
+
+      <section className="mx-auto max-w-[1240px] px-5 py-12 sm:px-8 sm:py-14 lg:px-12 lg:py-16">
+        <header className="mb-9">
+          <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.22em] text-[#C90070]">
+            Our Team · Information Technology
+          </p>
+          <h2 className="font-serif text-3xl font-medium sm:text-4xl">
+            Meet Our Associate
+          </h2>
+        </header>
+
+        <article className="grid items-start gap-8 sm:grid-cols-[230px_1fr] sm:gap-10 lg:grid-cols-[255px_1fr] lg:gap-12">
+          <figure className="mx-auto w-full max-w-[255px] sm:mx-0">
+            <Image
+              src="/images/bastab.png"
+              alt="Bastab Saikia - Associate, Website Design and Development"
+              width={900}
+              height={1100}
+              sizes="(max-width: 640px) 255px, 255px"
+              className="aspect-[4/5] w-full object-cover shadow-md"
+            />
+          </figure>
+
+          <section>
+            <h3 className="font-serif text-xl font-medium sm:text-2xl">
+              Bastab Saikia
+            </h3>
+
+            <p className="mt-1 text-xs font-semibold text-[#C90070]">
+              Associate – Website Design & Development
+            </p>
+
+            <p className="mt-2 text-[11px] text-[#61718A]">
+              Department: Information Technology & Digital Development
+            </p>
+
+            <hr className="my-5 border-[#10284C]/10" />
+
+            <h4 className="mb-3 text-[10px] font-bold uppercase tracking-[0.18em] text-[#C90070]">
+              Key Responsibilities
+            </h4>
+
+            <ol className="space-y-2">
+              {itResponsibilities.map((item, index) => (
+                <li
+                  key={index}
+                  className="flex gap-3 text-xs leading-5 text-[#61718A]"
+                >
+                  <span className="shrink-0 font-bold text-[#C90070]">
+                    0{index + 1}.
+                  </span>
+                  {item}
+                </li>
+              ))}
+            </ol>
+
+            <p className="mt-6 border-t border-[#10284C]/10 pt-4 text-[9px] font-semibold uppercase tracking-[0.14em] text-[#10284C]/50">
+              Information Technology & Digital Development · SOHOJ
             </p>
           </section>
         </article>
