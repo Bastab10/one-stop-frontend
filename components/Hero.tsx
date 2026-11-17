@@ -1,11 +1,13 @@
-
 import Link from "next/link";
 import { ArrowUpRight, Users, MapPin, ShieldCheck } from "lucide-react";
 
 const BUSINESS_PHONE = "916026936104";
 
+const SHOP_ADDRESS =
+  " Tezpur, Assam 784001";
+
 const SHOP_MAPS_LINK =
-  "https://www.google.com/maps/search/?api=1&query=Baba%20Cyber%20Point%2C%201%20No%20Railgate%2C%20Cotton%20Rd%2C%20Bhairabpad%2C%20Tezpur%2C%20Assam%20784001";
+  "https://www.google.com/maps/search/?api=1&query=19%2F6001%2F1%2C%20Tezpur%20Main%20Rd%2C%20Bhairabpad%2C%20Tezpur%2C%20Assam%20784001";
 
 const servicePhotos = [
   {
@@ -32,7 +34,6 @@ export default function Hero() {
       className="relative overflow-hidden bg-white text-[#10294C]"
     >
       <div className="mx-auto grid min-h-[calc(100svh-80px)] max-w-[1600px] items-center gap-8 px-5 py-7 sm:px-8 sm:py-10 lg:grid-cols-2 lg:gap-8 lg:px-10 lg:py-8 xl:px-12">
-
         <div className="relative z-10">
           <div className="mb-4 flex items-center gap-3 sm:mb-5">
             <span className="h-[2px] w-8 bg-[#C90070]" />
@@ -76,9 +77,7 @@ export default function Hero() {
             </a>
           </div>
 
-          {/* Features */}
           <div className="mt-7 grid max-w-[500px] grid-cols-3 border-t border-[#10294C]/10 pt-4 sm:mt-8">
-
             <div className="pr-2 sm:pr-4">
               <ShieldCheck
                 size={19}
@@ -103,12 +102,11 @@ export default function Hero() {
               </p>
             </div>
 
-            {/* Clickable Shop Location */}
             <a
               href={SHOP_MAPS_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="View Baba Cyber Point, SOHOJ shop location on Google Maps"
+              aria-label={`View shop location: ${SHOP_ADDRESS}`}
               className="group border-l border-[#10294C]/10 pl-3 transition-colors duration-300 sm:pl-5"
             >
               <MapPin
@@ -121,21 +119,18 @@ export default function Hero() {
                 Our Location
               </p>
 
-              <p className="mt-1 text-[10px] leading-4 text-[#61718A] transition-colors group-hover:text-[#C90070] sm:text-xs">
-                Tezpur, Assam
+              <p className="mt-1 break-words text-[9px] leading-[1.5] text-[#61718A] transition-colors group-hover:text-[#C90070] sm:text-[10px]">
+                {SHOP_ADDRESS}
               </p>
 
-              <span className="mt-1 inline-flex items-center gap-1 text-[9px] font-semibold text-[#C90070] opacity-0 transition-opacity group-hover:opacity-100">
+              <span className="mt-2 inline-flex items-center gap-1 text-[9px] font-semibold text-[#C90070]">
                 View Map <ArrowUpRight size={11} />
               </span>
             </a>
-
           </div>
         </div>
 
-        {/* Service Images */}
         <div className="relative mx-auto mt-2 h-[390px] w-full max-w-[500px] sm:h-[470px] lg:mt-0 lg:h-[450px] xl:h-[490px]">
-
           <div className="absolute right-[5%] top-[5%] h-[82%] w-[78%] rounded-t-[48%] rounded-b-lg bg-[#FCE7F3]" />
 
           <div className="absolute right-[8%] top-[8%] h-16 w-16 rounded-full border border-[#EC4899]/70 sm:h-24 sm:w-24" />
@@ -189,7 +184,6 @@ export default function Hero() {
               — <strong className="font-bold">SOHOJ</strong>
             </p>
           </div>
-
         </div>
       </div>
 
