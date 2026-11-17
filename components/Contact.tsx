@@ -15,6 +15,8 @@ import { FaWhatsapp } from "react-icons/fa";
 
 const BUSINESS_PHONE = "916026936104";
 const BUSINESS_EMAIL = "sohojservices1@gmail.com";
+const BUSINESS_MAP_URL =
+  "https://www.google.com/maps/search/?api=1&query=19%2F6001%2F1%2C%20Tezpur%20Main%20Rd%2C%20Bhairabpad%2C%20Tezpur%2C%20Assam%20784001";
 
 const services = [
   "Painting Services",
@@ -38,8 +40,7 @@ function ContactContent() {
 
   const serviceFromUrl =
     services.find(
-      (item) =>
-        item.toLowerCase() === requestedService?.trim().toLowerCase()
+      (item) => item.toLowerCase() === requestedService?.trim().toLowerCase(),
     ) || "";
 
   const [name, setName] = useState("");
@@ -69,8 +70,7 @@ function ContactContent() {
     ].join("\n");
 
     const whatsappURL =
-      `https://wa.me/${BUSINESS_PHONE}?text=` +
-      encodeURIComponent(enquiry);
+      `https://wa.me/${BUSINESS_PHONE}?text=` + encodeURIComponent(enquiry);
 
     window.open(whatsappURL, "_blank", "noopener,noreferrer");
   }
@@ -100,9 +100,7 @@ function ContactContent() {
 
         <div className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr] lg:gap-20">
           <div>
-            <h3 className="font-serif text-3xl sm:text-4xl">
-              Get in touch
-            </h3>
+            <h3 className="font-serif text-3xl sm:text-4xl">Get in touch</h3>
 
             <p className="mt-4 max-w-sm text-sm leading-7 text-[#10284C]/65">
               Have a question or need more than one service? Contact us and
@@ -117,9 +115,16 @@ function ContactContent() {
 
                 <div>
                   <h4 className="text-sm font-semibold">Our Location</h4>
-                  <p className="mt-1 text-sm leading-6 text-[#10284C]/65">
-                    Tezpur, Assam, India
-                  </p>
+
+                  <a
+                    href={BUSINESS_MAP_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-2 inline-flex items-center gap-1 text-sm font-semibold text-[#C90070] transition hover:underline"
+                  >
+                    Get Directions
+                    <ArrowUpRight size={15} aria-hidden="true" />
+                  </a>
                 </div>
               </div>
 
@@ -134,7 +139,7 @@ function ContactContent() {
                     href={`tel:+${BUSINESS_PHONE}`}
                     className="mt-1 block text-sm text-[#10284C]/65 transition hover:text-[#C90070]"
                   >
-                    +{BUSINESS_PHONE}
+                    +91 60269 36104
                   </a>
                 </div>
               </div>
@@ -319,11 +324,7 @@ function ContactContent() {
                 type="submit"
                 className="group flex w-full items-center justify-center gap-3 rounded-xl bg-[#25D366] px-5 py-5 text-sm font-bold text-white shadow-lg shadow-green-600/15 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#1DA851] hover:shadow-xl active:translate-y-0 sm:text-base"
               >
-                <FaWhatsapp
-                  size={28}
-                  aria-hidden="true"
-                  className="shrink-0"
-                />
+                <FaWhatsapp size={28} aria-hidden="true" className="shrink-0" />
 
                 <span>Send Enquiry on WhatsApp</span>
 

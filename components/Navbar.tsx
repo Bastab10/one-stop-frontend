@@ -32,7 +32,7 @@ export default function Navbar() {
           className="relative block h-[50px] w-[150px] shrink-0 sm:h-[56px] sm:w-[180px] lg:h-[60px] lg:w-[195px]"
         >
           <Image
-            src="/images/sohoj.png"
+            src="/images/sohojlogo-tm.png"
             alt="SOHOJ — One Stop Service Solutions"
             fill
             priority

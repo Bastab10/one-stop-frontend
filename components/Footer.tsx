@@ -1,3 +1,4 @@
+
 import Image from "next/image";
 import Link from "next/link";
 import { Phone, Mail, MapPin, ChevronRight } from "lucide-react";
@@ -16,7 +17,7 @@ const socialLinks = [
   },
   {
     label: "Instagram",
-    href: "https://www.instagram.com/",
+    href: "https://www.instagram.com/sohoj_services_26?obrf=cnEwYWhzNmw4Z2p4",
     icon: FaInstagram,
     color: "text-[#E4405F]",
     hoverColor: "hover:bg-[#E4405F]",
@@ -55,7 +56,6 @@ export default function Footer() {
   return (
     <footer className="sohoj-footer relative overflow-hidden border-t border-[#10284C]/10 bg-[#FCFCFA] text-[#10284C]">
       <div className="relative mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12 xl:px-16">
-        {/* Footer heading */}
         <div className="flex flex-col gap-6 border-b border-[#10284C]/10 py-9 sm:py-11 md:flex-row md:items-center md:justify-between">
           <div>
             <p className="mb-3 flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.24em] text-[#C90070] sm:text-xs">
@@ -66,8 +66,7 @@ export default function Footer() {
             <h2 className="font-serif text-3xl font-medium leading-tight tracking-[-0.04em] sm:text-4xl lg:text-5xl">
               Less searching.
               <span className="block italic text-[#C90070] sm:inline">
-                {" "}
-                More living.
+                {" "}More living.
               </span>
             </h2>
 
@@ -86,7 +85,7 @@ export default function Footer() {
               className="inline-flex items-center"
             >
               <Image
-                src="/images/sohoj.png"
+                src="/images/sohojlogo-tm.png"
                 alt="SOHOJ - Your Need, Our Service"
                 width={190}
                 height={76}
@@ -119,6 +118,7 @@ export default function Footer() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={social.label}
+                      title={social.label}
                       className={`flex h-10 w-10 items-center justify-center rounded-full border border-[#10284C]/10 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-transparent ${social.color} ${social.hoverColor} hover:text-white`}
                     >
                       <Icon size={18} aria-hidden="true" />
