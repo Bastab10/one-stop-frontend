@@ -329,6 +329,9 @@ export default function Founder() {
               <p className="mt-2 text-sm font-semibold text-[#10284C]">
                 Bachelor of Computer Applications (BCA)
               </p>
+              <p className="mt-1 text-xs text-[#61718A]">
+                North Lakhimpur University
+              </p>
             </div>
           </div>
         </div>
