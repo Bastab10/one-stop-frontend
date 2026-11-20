@@ -8,6 +8,7 @@ import {
   GraduationCap,
   Code2,
   BriefcaseBusiness,
+  Share2,
 } from "lucide-react";
 
 const hrResponsibilities = [
@@ -24,15 +25,25 @@ const itResponsibilities = [
   "Technical support for SOHOJ's online presence.",
 ];
 
+const digitalMediaResponsibilities = [
+  "Management of the official SOHOJ Facebook page.",
+  "Management of the official SOHOJ Instagram account.",
+  "Creation and management of the SOHOJ YouTube channel.",
+  "Video production, editing and promotional content.",
+  "Digital brand promotion and audience engagement.",
+  "Social media advertising and campaign coordination.",
+  "Monitoring followers, views, subscribers and customer enquiries.",
+  "Monthly digital marketing performance reports.",
+];
+
 function Responsibilities({ items }: { items: string[] }) {
   return (
     <ol className="mt-4 space-y-3">
       {items.map((item, index) => (
         <li key={index} className="flex items-start gap-3">
           <span className="flex h-6 w-7 shrink-0 items-center justify-center bg-[#C90070]/10 text-[10px] font-bold text-[#C90070]">
-            0{index + 1}
+            {String(index + 1).padStart(2, "0")}
           </span>
-
           <span className="pt-0.5 text-sm leading-6 text-[#61718A]">
             {item}
           </span>
@@ -68,7 +79,6 @@ function TeamSection({
           <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.24em] text-[#C90070]">
             {eyebrow}
           </p>
-
           <h2 className="font-serif text-3xl font-medium text-[#10284C] sm:text-4xl">
             {title}
           </h2>
@@ -86,7 +96,6 @@ function TeamSection({
                 className="aspect-[4/5] w-full object-cover"
               />
             </div>
-
             <div className="mt-4 h-[3px] w-14 bg-[#C90070]" />
           </figure>
 
@@ -125,7 +134,6 @@ export default function Founder() {
           <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.24em] text-[#C90070]">
             Leadership · SOHOJ
           </p>
-
           <h2 className="font-serif text-3xl font-medium sm:text-4xl">
             Meet Our Founder
           </h2>
@@ -144,7 +152,6 @@ export default function Founder() {
                 className="h-auto w-full"
               />
             </div>
-
             <div className="mt-4 h-[3px] w-16 bg-[#C90070]" />
           </figure>
 
@@ -160,11 +167,7 @@ export default function Founder() {
             <hr className="my-6 border-[#10284C]/10" />
 
             <blockquote className="mb-8">
-              <Quote
-                size={30}
-                className="mb-3 text-[#C90070]/60"
-              />
-
+              <Quote size={30} className="mb-3 text-[#C90070]/60" />
               <p className="max-w-2xl font-serif text-2xl font-semibold italic leading-snug sm:text-3xl lg:text-[36px]">
                 “I will win, not immediately, but definitely.”
               </p>
@@ -235,11 +238,7 @@ export default function Founder() {
       >
         <div>
           <div className="flex items-center gap-2">
-            <GraduationCap
-              size={19}
-              className="text-[#C90070]"
-            />
-
+            <GraduationCap size={19} className="text-[#C90070]" />
             <h4 className="text-[11px] font-bold uppercase tracking-[0.16em]">
               Educational Background
             </h4>
@@ -250,11 +249,9 @@ export default function Founder() {
               <p className="text-[9px] font-bold uppercase tracking-wider text-[#C90070]">
                 Graduation
               </p>
-
               <p className="mt-2 text-sm font-semibold">
                 Civil Engineering
               </p>
-
               <p className="mt-1 text-xs text-[#61718A]">
                 Tezpur University
               </p>
@@ -264,11 +261,7 @@ export default function Founder() {
               <p className="text-[9px] font-bold uppercase tracking-wider text-[#C90070]">
                 Post Graduation
               </p>
-
-              <p className="mt-2 text-sm font-semibold">
-                MBA
-              </p>
-
+              <p className="mt-2 text-sm font-semibold">MBA</p>
               <p className="mt-1 text-xs text-[#61718A]">
                 NIT Silchar
               </p>
@@ -285,16 +278,11 @@ export default function Founder() {
 
         <div className="mt-7">
           <div className="flex items-center gap-2">
-            <BriefcaseBusiness
-              size={17}
-              className="text-[#C90070]"
-            />
-
+            <BriefcaseBusiness size={17} className="text-[#C90070]" />
             <h4 className="text-[11px] font-bold uppercase tracking-[0.16em]">
               Key Responsibilities
             </h4>
           </div>
-
           <Responsibilities items={hrResponsibilities} />
         </div>
       </TeamSection>
@@ -310,11 +298,7 @@ export default function Founder() {
       >
         <div className="mb-6">
           <div className="flex items-center gap-2">
-            <GraduationCap
-              size={19}
-              className="text-[#C90070]"
-            />
-
+            <GraduationCap size={19} className="text-[#C90070]" />
             <h4 className="text-[11px] font-bold uppercase tracking-[0.16em]">
               Educational Background
             </h4>
@@ -325,7 +309,6 @@ export default function Founder() {
               <p className="text-[9px] font-bold uppercase tracking-wider text-[#C90070]">
                 Graduation
               </p>
-
               <p className="mt-2 text-sm font-semibold text-[#10284C]">
                 Bachelor of Computer Applications (BCA)
               </p>
@@ -338,24 +321,96 @@ export default function Founder() {
 
         <p className="text-sm leading-7 text-[#61718A]">
           Responsible for developing and maintaining SOHOJ&apos;s
-          digital presence, ensuring a professional online
-          platform and supporting the organisation&apos;s
-          technology-driven growth.
+          digital presence, ensuring a professional online platform
+          and supporting the organisation&apos;s technology-driven
+          growth.
         </p>
 
         <div className="mt-7">
           <div className="flex items-center gap-2">
-            <Code2
-              size={18}
-              className="text-[#C90070]"
-            />
-
+            <Code2 size={18} className="text-[#C90070]" />
             <h4 className="text-[11px] font-bold uppercase tracking-[0.16em]">
               Key Responsibilities
             </h4>
           </div>
-
           <Responsibilities items={itResponsibilities} />
+        </div>
+      </TeamSection>
+
+      <TeamSection
+        eyebrow="Our Team · Digital Media"
+        title="Meet Our Associate"
+        image="/images/deepjyoti-boruah.png"
+        imageAlt="Deepjyoti Boruah - Associate, Digital Media and Brand Communications"
+        name="Deepjyoti Boruah"
+        designation="Associate – Digital Media & Brand Communications"
+        department="Digital Media & Brand Communications"
+      >
+        <div>
+          <div className="flex items-center gap-2">
+            <GraduationCap size={19} className="text-[#C90070]" />
+            <h4 className="text-[11px] font-bold uppercase tracking-[0.16em]">
+              Educational Qualifications
+            </h4>
+          </div>
+
+          <div className="mt-4 grid gap-3 sm:grid-cols-2">
+            <div className="border border-[#10284C]/10 bg-white p-4">
+              <p className="text-[9px] font-bold uppercase tracking-wider text-[#C90070]">
+                Undergraduate
+              </p>
+              <p className="mt-2 text-sm font-semibold leading-6">
+                B.Sc. (Agriculture)
+              </p>
+            </div>
+
+            <div className="border border-[#10284C]/10 bg-white p-4">
+              <p className="text-[9px] font-bold uppercase tracking-wider text-[#C90070]">
+                Postgraduate
+              </p>
+              <p className="mt-2 text-sm font-semibold leading-6">
+                M.A. in Geography & Political Science
+              </p>
+            </div>
+
+            <div className="border border-[#10284C]/10 bg-white p-4">
+              <p className="text-[9px] font-bold uppercase tracking-wider text-[#C90070]">
+                Doctoral
+              </p>
+              <p className="mt-2 text-sm font-semibold leading-6">
+                PhD in Fine Arts
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-6 border border-[#10284C]/10 bg-white p-4">
+          <p className="text-[9px] font-bold uppercase tracking-[0.16em] text-[#C90070]">
+            Operational Title
+          </p>
+          <p className="mt-2 text-sm font-semibold leading-6 text-[#10284C]">
+            Social Media & YouTube Channel Manager
+          </p>
+        </div>
+
+        <p className="mt-6 text-sm leading-7 text-[#61718A]">
+          Deepjyoti Boruah is responsible for managing SOHOJ&apos;s
+          social media platforms and YouTube channel, developing
+          promotional content, coordinating digital marketing
+          campaigns and strengthening brand visibility. The role
+          also focuses on audience engagement, monitoring online
+          performance and managing customer enquiries across
+          digital platforms.
+        </p>
+
+        <div className="mt-7">
+          <div className="flex items-center gap-2">
+            <Share2 size={18} className="text-[#C90070]" />
+            <h4 className="text-[11px] font-bold uppercase tracking-[0.16em]">
+              Key Responsibilities
+            </h4>
+          </div>
+          <Responsibilities items={digitalMediaResponsibilities} />
         </div>
       </TeamSection>
     </main>
