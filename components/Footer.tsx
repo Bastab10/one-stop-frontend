@@ -1,4 +1,6 @@
 
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { Phone, Mail, MapPin, ChevronRight } from "lucide-react";
@@ -54,7 +56,14 @@ const footerLinkClass =
 
 export default function Footer() {
   return (
-    <footer className="sohoj-footer relative overflow-hidden border-t border-[#10284C]/10 bg-[#FCFCFA] text-[#10284C]">
+    <footer
+      className="sohoj-footer relative isolate overflow-hidden border-t border-[#10284C]/10 bg-white text-[#10284C] [background-color:#FFFFFF] [color-scheme:light]"
+      style={{
+        backgroundColor: "#FFFFFF",
+        color: "#10284C",
+        colorScheme: "light",
+      }}
+    >
       <div className="relative mx-auto max-w-[1440px] px-5 sm:px-8 lg:px-12 xl:px-16">
         <div className="flex flex-col gap-6 border-b border-[#10284C]/10 py-9 sm:py-11 md:flex-row md:items-center md:justify-between">
           <div>
@@ -63,7 +72,7 @@ export default function Footer() {
               YOUR NEED, OUR SERVICE
             </p>
 
-            <h2 className="font-serif text-3xl font-medium leading-tight tracking-[-0.04em] sm:text-4xl lg:text-5xl">
+            <h2 className="font-serif text-3xl font-medium leading-tight tracking-[-0.04em] text-[#10284C] sm:text-4xl lg:text-5xl">
               Less searching.
               <span className="block italic text-[#C90070] sm:inline">
                 {" "}More living.
@@ -130,7 +139,7 @@ export default function Footer() {
           </div>
 
           <div className="border-t border-[#10284C]/10 pt-7 sm:border-t-0 sm:pt-0 lg:col-span-2 lg:border-l lg:px-6 lg:pt-0">
-            <h3 className="text-base font-bold tracking-tight sm:text-lg">
+            <h3 className="text-base font-bold tracking-tight text-[#10284C] sm:text-lg">
               Quick Links
             </h3>
 
@@ -153,7 +162,7 @@ export default function Footer() {
           </div>
 
           <div className="border-t border-[#10284C]/10 pt-7 sm:border-t-0 sm:pt-0 lg:col-span-3 lg:border-l lg:px-7 lg:pt-0">
-            <h3 className="text-base font-bold tracking-tight sm:text-lg">
+            <h3 className="text-base font-bold tracking-tight text-[#10284C] sm:text-lg">
               Our Services
             </h3>
 
@@ -176,7 +185,7 @@ export default function Footer() {
           </div>
 
           <div className="border-t border-[#10284C]/10 pt-7 sm:border-t-0 sm:pt-0 lg:col-span-3 lg:border-l lg:pl-7 lg:pt-0">
-            <h3 className="text-base font-bold tracking-tight sm:text-lg">
+            <h3 className="text-base font-bold tracking-tight text-[#10284C] sm:text-lg">
               Contact Us
             </h3>
 
@@ -195,7 +204,7 @@ export default function Footer() {
                   <span className="block text-xs font-medium text-[#10284C]/50">
                     Call us
                   </span>
-                  <span className="mt-1 block text-sm font-semibold transition-colors group-hover:text-[#C90070]">
+                  <span className="mt-1 block text-sm font-semibold text-[#10284C] transition-colors group-hover:text-[#C90070]">
                     +91 60269 36104
                   </span>
                 </span>
@@ -215,7 +224,7 @@ export default function Footer() {
                   <span className="block text-xs font-medium text-[#10284C]/50">
                     WhatsApp
                   </span>
-                  <span className="mt-1 block text-sm font-semibold transition-colors group-hover:text-[#25D366]">
+                  <span className="mt-1 block text-sm font-semibold text-[#10284C] transition-colors group-hover:text-[#25D366]">
                     Chat with our team
                   </span>
                 </span>
@@ -233,7 +242,7 @@ export default function Footer() {
                   <span className="block text-xs font-medium text-[#10284C]/50">
                     Email us
                   </span>
-                  <span className="mt-1 block break-all text-sm font-semibold transition-colors group-hover:text-[#C90070]">
+                  <span className="mt-1 block break-all text-sm font-semibold text-[#10284C] transition-colors group-hover:text-[#C90070]">
                     {FOOTER_EMAIL}
                   </span>
                 </span>
@@ -248,7 +257,7 @@ export default function Footer() {
                   <span className="block text-xs font-medium text-[#10284C]/50">
                     Our location
                   </span>
-                  <span className="mt-1 block text-sm font-semibold">
+                  <span className="mt-1 block text-sm font-semibold text-[#10284C]">
                     Tezpur, Assam, India
                   </span>
                   <span className="mt-1 block text-xs leading-5 text-[#10284C]/55">
@@ -261,7 +270,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="relative border-t border-[#10284C]/10 bg-white/80">
+      <div className="relative border-t border-[#10284C]/10 bg-white [background-color:#FFFFFF]">
         <div className="mx-auto flex max-w-[1440px] flex-col gap-4 px-5 py-5 sm:px-8 md:flex-row md:items-center md:justify-between lg:px-12 xl:px-16">
           <p className="text-xs leading-5 text-[#10284C]/55">
             © {new Date().getFullYear()} SOHOJ. All rights reserved.
