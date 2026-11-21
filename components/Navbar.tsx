@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -23,8 +22,6 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-[#10294C]/10 bg-white/95 backdrop-blur-md">
       <nav className="mx-auto flex h-[68px] max-w-[1600px] items-center justify-between gap-3 px-4 sm:h-[72px] sm:px-6 lg:h-[76px] lg:gap-5 lg:px-10">
-
-        {/* LOGO */}
         <Link
           href="/#home"
           aria-label="SOHOJ Home"
@@ -41,7 +38,6 @@ export default function Navbar() {
           />
         </Link>
 
-        {/* DESKTOP NAVIGATION */}
         <div className="hidden items-center gap-5 lg:flex xl:gap-8">
           {navLinks.map((link) => (
             <Link
@@ -56,7 +52,6 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* DESKTOP CONTACT BUTTONS */}
         <div className="hidden shrink-0 items-center gap-2 lg:flex xl:gap-2.5">
           <a
             href={`tel:+${BUSINESS_PHONE}`}
@@ -83,7 +78,6 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* MOBILE MENU BUTTON */}
         <button
           type="button"
           onClick={() => setMenuOpen((prev) => !prev)}
@@ -95,11 +89,9 @@ export default function Navbar() {
         </button>
       </nav>
 
-      {/* MOBILE NAVIGATION */}
       {menuOpen && (
         <div className="border-t border-[#10294C]/10 bg-white lg:hidden">
           <div className="mx-auto max-w-[1600px] px-5 py-4 sm:px-6">
-
             <div className="flex flex-col">
               {navLinks.map((link, index) => (
                 <Link
@@ -117,7 +109,6 @@ export default function Navbar() {
               ))}
             </div>
 
-            {/* MOBILE CONTACT BUTTONS */}
             <div className="mt-4 grid grid-cols-2 gap-2">
               <a
                 href={`tel:+${BUSINESS_PHONE}`}

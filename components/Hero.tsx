@@ -45,11 +45,11 @@ export default function Hero() {
           <h1 className="max-w-[620px] font-serif text-[3.25rem] font-medium leading-[0.91] tracking-[-0.055em] sm:text-6xl lg:text-[4rem] xl:text-[4.5rem]">
             All Your
             <br />
-            Services<span className="text-[#C90070]">.</span>
+            Services
             <br />
             <span className="italic text-[#C90070]">One Trusted</span>
             <br />
-            Partner<span className="text-[#C90070]">.</span>
+            Partner
           </h1>
 
           <p className="mt-5 max-w-[450px] text-sm leading-6 text-[#415775] sm:mt-6 sm:text-base sm:leading-7">

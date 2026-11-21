@@ -102,11 +102,6 @@ function ContactContent() {
           <div>
             <h3 className="font-serif text-3xl sm:text-4xl">Get in touch</h3>
 
-            <p className="mt-4 max-w-sm text-sm leading-7 text-[#10284C]/65">
-              Have a question or need more than one service? Contact us and
-              share your requirements.
-            </p>
-
             <div className="mt-8 space-y-0 border-t border-[#10284C]/10">
               <div className="flex gap-4 border-b border-[#10284C]/10 py-5">
                 <div className="flex h-11 w-11 shrink-0 items-center justify-center bg-[#C90070]/10">
@@ -192,7 +187,7 @@ function ContactContent() {
             </div>
           </div>
 
-          <div className="border border-[#10284C]/10 p-5 sm:p-8 lg:p-10">
+          <div className=" p-5 sm:p-8 lg:p-10">
             <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#C90070]">
               Service Enquiry
             </p>
